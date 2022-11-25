@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="654.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.WinnerTopScoresViewController">
+   <children>
+      <SplitPane dividerPositions="0.15897435897435894" layoutX="14.0" layoutY="14.0" orientation="VERTICAL" prefHeight="625.0" prefWidth="586.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="251.0" layoutY="14.0" text="Winner" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font name="Palatino Linotype Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="64.0" layoutY="62.0" text="Player Name:" textFill="#4400ff">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="341.0" layoutY="62.0" text="Player Score:" textFill="#4400ff">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="winnerPlayerName" layoutX="173.0" layoutY="62.0">
+                     <font>
+                        <Font name="Nirmala UI" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="winnerPlayerScore" layoutX="446.0" layoutY="62.0">
+                     <font>
+                        <Font name="Nirmala UI" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="topScoreTable" layoutY="67.0" prefHeight="454.0" prefWidth="579.0">
+                    <columns>
+                      <TableColumn fx:id="topScoreNameColumn" prefWidth="289.6000364422798" text="Player Names" />
+                      <TableColumn fx:id="topScoreValueColumn" prefWidth="288.7999267578125" text="Player Scores" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="232.0" layoutY="20.0" text="Top Scores" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font name="Palatino Linotype Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

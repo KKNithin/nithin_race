@@ -279,17 +279,19 @@ public class GameViewController {
     public String showTeleportationDialog(List<String> players) {
 
         String playerChoosen = players.get(0);
-        ChoiceDialog<String> dialog = new ChoiceDialog<>(players.get(0), players);
-        dialog.setTitle("Teleportation Dialog");
-        dialog.setHeaderText("You are in a Teleportation Tunnel");
-        dialog.setContentText("Please choose a player you want to teleport to:");
+        if (players.size() != 1) {
+            ChoiceDialog<String> dialog = new ChoiceDialog<>(players.get(0), players);
+            dialog.setTitle("Teleportation Dialog");
+            dialog.setHeaderText("You are in a Teleportation Tunnel");
+            dialog.setContentText("Please choose a player you want to teleport to:");
 
-        // Traditional way to get the response value.
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
-            System.out.println("Your choice: " + result.get());
-            playerChoosen = result.get();
-            return playerChoosen;
+            // Traditional way to get the response value.
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                System.out.println("Your choice: " + result.get());
+                playerChoosen = result.get();
+                return playerChoosen;
+            }
         }
         return playerChoosen;
     }

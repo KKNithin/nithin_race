@@ -216,6 +216,8 @@ public class GameViewController {
             Stage stage = (Stage) rollButton.getScene().getWindow();
             WinnerTopScoresViewController winnerTopScoresViewController = fxmlLoader.getController();
             winnerTopScoresViewController.initialize(topScores, p);
+            stage.setX(screenWidth/4);
+            stage.setY(0);
             stage.setTitle("Nithin's-Race");
             stage.setScene(scene);
             stage.show();

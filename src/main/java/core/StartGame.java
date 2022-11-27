@@ -119,7 +119,7 @@ public class StartGame {
         int[] tempXY = new int[2];
         int tempX, tempY;
         b.removePlayerFromPosition(x, y);
-        gvc.modifyGridTile(CLEAR, x, y, p, NONE);
+//        gvc.modifyGridTile(CLEAR, x, y, p, NONE);
         if(b.getPosition(x, y).getTrapType()==TAR_PIT){
             gvc.modifyGridTile(ADD_OBSTACLE, p.getPositionX(), p.getPositionY(), null, TAR_PIT);
         }

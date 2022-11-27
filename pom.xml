@@ -42,20 +42,38 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>4.0.16-alpha</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>4.0.16-alpha</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <!--<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.testfx/testfx-junit -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit</artifactId>
             <version>4.0.15-alpha</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.testfx/testfx-core -->
 <!--
@@ -87,9 +105,24 @@
         <!--<dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito</artifactId>
-            <version>1.7.4</version>
+            <version>1.5.1</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito-common -->
+       <!-- <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito-common</artifactId>
+            <version>1.6.5</version>
             <scope>test</scope>
         </dependency>-->
+
 
     </dependencies>
 
@@ -103,6 +136,7 @@
                     <argLine>
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                     </argLine>
+                    <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
                 </configuration>
             </plugin>
             <plugin>

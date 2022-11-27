@@ -3,6 +3,7 @@ package core;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utilities.Constants.Directions.BACKWARD;
 import static utilities.Constants.Directions.FORWARD;
 import static utilities.Constants.TrapType.TELEPROTATION_TUNNEL;
@@ -11,20 +12,22 @@ import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
-import org.testfx.framework.junit.ApplicationTest;
+import org.testfx.framework.junit5.ApplicationExtension;
+import org.testfx.framework.junit5.Start;
 import utilities.Constants;
 
-public class TeleportationObstacleTest extends ApplicationTest {
+@ExtendWith(ApplicationExtension.class)
+public class TeleportationObstacleTest {
 
     Player player1, player2;
 
 
-    @Override
+    @Start
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fx/game-view.fxml"));
         Parent root = fxmlLoader.load();
@@ -34,7 +37,7 @@ public class TeleportationObstacleTest extends ApplicationTest {
         StartGame.gvc = fxmlLoader.getController();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         Constants.rows = 8;
         Constants.columns = 8;
@@ -61,7 +64,7 @@ public class TeleportationObstacleTest extends ApplicationTest {
         StartGame.b.setTrap(6, 5, TELEPROTATION_TUNNEL);
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
     }
@@ -70,10 +73,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Forward_4_Test() {
         try {
             StartGame.validateMoveRoll(player1, 4, FORWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -83,10 +86,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Forward_3_Test() {
         try {
             StartGame.validateMoveRoll(player1, 3, FORWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -96,10 +99,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Forward_2_Test() {
         try {
             StartGame.validateMoveRoll(player1, 2, FORWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -109,10 +112,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Forward_1_Test() {
         try {
             StartGame.validateMoveRoll(player1, 1, FORWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -122,10 +125,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Backward_4_Test() {
         try {
             StartGame.validateMoveRoll(player2, 4, BACKWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -135,10 +138,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Backward_3_Test() {
         try {
             StartGame.validateMoveRoll(player2, 3, BACKWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -148,10 +151,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Backward_2_Test() {
         try {
             StartGame.validateMoveRoll(player2, 2, BACKWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -161,10 +164,10 @@ public class TeleportationObstacleTest extends ApplicationTest {
     public void telePortationObstacle_Backward_1_Test() {
         try {
             StartGame.validateMoveRoll(player2, 1, BACKWARD);
-            Assert.assertEquals(2, player1.getPositionX());
-            Assert.assertEquals(5, player1.getPositionY());
-            Assert.assertEquals(7, player2.getPositionX());
-            Assert.assertEquals(4, player2.getPositionY());
+            assertEquals(2, player1.getPositionX());
+            assertEquals(5, player1.getPositionY());
+            assertEquals(7, player2.getPositionX());
+            assertEquals(4, player2.getPositionY());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

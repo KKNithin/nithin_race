@@ -1,14 +1,16 @@
 package core;
 
-import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static utilities.Constants.*;
-import static utilities.Constants.GridOperationtype.*;
+import static utilities.Constants.GridOperationtype.ADD_OBSTACLE;
+import static utilities.Constants.GridOperationtype.ADD_PLAYER;
 import static utilities.Constants.TrapType.*;
 import exceptions.BoundaryCaseException;
 import exceptions.InvalidMoveException;
 import fx.GameViewController;
+import utilities.BoardPrinterCMD;
 import utilities.InitialPlayerPositionService;
 import utilities.InitialTrapPlacementService;
 
@@ -16,6 +18,7 @@ public class StartGame {
     public static Board b;
     public static Map<Player, Integer> playersInTarPit = new HashMap<>();
     public static GameViewController gvc;
+
     public static void main(GameViewController gameViewController) {
         gvc = gameViewController;
         b = new Board(rows, columns);
@@ -24,79 +27,9 @@ public class StartGame {
             b.addPlayerToPosition(p.getPositionX(), p.getPositionY(), p);
         }
         InitialTrapPlacementService.placeObstacles(b);
-        printBoard();
+        BoardPrinterCMD.printBoard();
     }
 
-    public static TopScores readTopScoreFile() {
-        TopScores topScores = new TopScores();
-        try {
-            File f = new File("top_scores.ser");
-            if(f.exists() && !f.isDirectory()) {
-                FileInputStream fileIn = new FileInputStream(f);
-                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-                Object obj = objectIn.readObject();
-                topScores = (TopScores) obj;
-                objectIn.close();
-            } else {
-                f.createNewFile();
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Top Scores file Not found");
-        }
-        return topScores;
-    }
-
-    public static void writeWinnerScoreToFile(Player p1) throws IOException, ClassNotFoundException {
-        List<Player> tempTopScores = new ArrayList<>();
-        TopScores topScores = new TopScores();
-        topScores.setPlayerList(tempTopScores);
-
-        try {
-            File f = new File("top_scores.ser");
-            if(f.exists() && !f.isDirectory()) {
-                FileInputStream fileIn = new FileInputStream(f);
-                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-                Object obj = objectIn.readObject();
-                topScores = (TopScores) obj;
-                objectIn.close();
-            } else {
-                f.createNewFile();
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Top Scores file Not found");
-        }
-
-
-        tempTopScores = topScores.getPlayerList();
-
-        for(Player p:allPlayers){
-            boolean isPlayerAlreadyExists = false;
-            for (int i = 0; i < topScores.getPlayerList().size(); i++) {
-                if(p.getName().equalsIgnoreCase(tempTopScores.get(i).getName())) {
-                    if(p.getScore() > tempTopScores.get(i).getScore()) {
-                        tempTopScores.get(i).replace(p);
-                    }
-                    isPlayerAlreadyExists = true;
-                }
-            }
-
-
-            if(tempTopScores.size() == 0 || !isPlayerAlreadyExists) {
-                tempTopScores.add(new Player(p.getName(), p.getScore()));
-            }
-        }
-
-        Collections.sort(tempTopScores);
-        if (tempTopScores.size() > 10) {
-            tempTopScores = new ArrayList<>(tempTopScores.subList(0, 10));
-        }
-        topScores.setPlayerList(tempTopScores);
-
-        FileOutputStream fileOut = new FileOutputStream("top_scores.ser");
-        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-        objectOut.writeObject(topScores);
-        objectOut.close();
-    }
 
     public static boolean isEligibleToRoll(Player p) {
         Integer noOfTimes = playersInTarPit.get(p);
@@ -122,8 +55,7 @@ public class StartGame {
         int[] tempXY = new int[2];
         int tempX, tempY;
         b.removePlayerFromPosition(x, y);
-//        gvc.modifyGridTile(CLEAR, x, y, p, NONE);
-        if(b.getPosition(x, y).getTrapType()==TAR_PIT){
+        if (b.getPosition(x, y).getTrapType() == TAR_PIT) {
             gvc.modifyGridTile(ADD_OBSTACLE, p.getPositionX(), p.getPositionY(), null, TAR_PIT);
         }
         try {
@@ -156,6 +88,7 @@ public class StartGame {
         }
         return true;
     }
+
     public static int[] moveHorizontally(int x, int y, int moveVal, Boolean isRight) {
         int i = x;
         int j = y;
@@ -163,7 +96,7 @@ public class StartGame {
             if (isRight) {
                 j++;
                 moveVal--;
-                if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i,j)) {
+                if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i, j)) {
                     b.addTempPlayerToPosition(i, j - 1);
                     gvc.enableButtonsForMovement("U/D/S");
                     String userString = gvc.playerMoveResponse();
@@ -182,7 +115,7 @@ public class StartGame {
             } else {
                 j--;
                 moveVal--;
-                if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i,j)) {
+                if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i, j)) {
                     b.addTempPlayerToPosition(i, j + 1);
                     gvc.enableButtonsForMovement("U/D/S");
                     String userString = gvc.playerMoveResponse();
@@ -216,7 +149,7 @@ public class StartGame {
                 if (i < 0) {
                     return new int[]{-1, j};
                 }
-                if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i,j)) {
+                if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i, j)) {
                     b.addTempPlayerToPosition(i + 1, j);
                     String userInput = queryString(j);
                     b.removePlayerFromPosition(i + 1, j);
@@ -232,7 +165,7 @@ public class StartGame {
             } else {
                 i++;
                 moveVal--;
-                if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i,j)) {
+                if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i, j)) {
                     b.addTempPlayerToPosition(i - 1, j);
                     String userInput = queryString(j);
                     b.removePlayerFromPosition(i - 1, j);
@@ -309,34 +242,6 @@ public class StartGame {
             return new int[]{bx - 1, tempy};
         }
         return new int[]{tempx, tempy};
-    }
-    public static void printBoard() {
-        for (int i = 0; i < b.getRows(); i++) {
-            for (int j = 0; j < b.getColumns(); j++) {
-                printTile(i, j);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void printTile(int i, int j) {
-        if (b.getPosition(i, j).getTrapType() == FENCE) {
-            System.out.print("P");
-        } else if (b.getPosition(i, j).getTrapType() == TAR_PIT) {
-            System.out.print("T");
-        } else if (b.getPosition(i, j).getTrapType() == TELEPROTATION_TUNNEL) {
-            System.out.print("U");
-        } else if (b.getPosition(i, j).getTrapType() == FIRE) {
-            System.out.print("F");
-        }
-        if (b.getPosition(i, j).getPlayer() == null && b.getPosition(i, j).getTrapType() == NONE) {
-            System.out.print("_");
-        } else if (b.getPosition(i, j).getPlayer() != null) {
-            char c = b.getPosition(i, j).getPlayer().getName().toCharArray()[0];
-            System.out.print(c);
-        }
-
     }
 }
 

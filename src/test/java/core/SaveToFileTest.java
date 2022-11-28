@@ -7,8 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import exceptions.PlayerNameError;
 import org.junit.jupiter.api.Test;
 import utilities.Constants;
+import utilities.FileHandler;
 
 public class SaveToFileTest {
+
+    private FileHandler fileHandler = new FileHandler();
 
     @Test
     public void save_13_players_to_list(){
@@ -26,8 +29,8 @@ public class SaveToFileTest {
             Constants.allPlayers.add(new Player(0,1,"Aditya", 10));
             Constants.allPlayers.add(new Player(0,1,"Kiran", 20));
             Constants.allPlayers.add(new Player(0,1,"Naveen", 30));
-            StartGame.writeWinnerScoreToFile(new Player());
-            assertEquals(StartGame.readTopScoreFile().getPlayerList().size(),10);
+            fileHandler.writeWinnerScoreToFile(new Player());
+            assertEquals(fileHandler.readTopScoreFile().getPlayerList().size(),10);
 
         } catch (PlayerNameError e) {
             throw new RuntimeException(e);

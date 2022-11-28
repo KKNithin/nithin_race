@@ -24,9 +24,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import utilities.Constants;
-import utilities.DirectionDice;
-import utilities.MoveDice;
+import utilities.*;
 
 public class GameViewController {
 
@@ -75,6 +73,8 @@ public class GameViewController {
     private String buttonResponse = null;
 
     private final Object waitKey = new Object();
+
+    private FileHandler fileHandler = new FileHandler();
 
     public void setGameViewScreen() {
         mainGameAnchor.setPrefWidth(screenWidth);
@@ -203,13 +203,13 @@ public class GameViewController {
             if (StartGame.validateMoveRoll(p, moveVal, directionVal)) {
                 System.out.println(p);
                 System.out.println();
-                StartGame.printBoard();
+                BoardPrinterCMD.printBoard();
                 System.out.println("=============================");
             }
         }
         if (p.getPositionX() == 0) {
-            StartGame.writeWinnerScoreToFile(p);
-            TopScores topScores = StartGame.readTopScoreFile();
+            fileHandler.writeWinnerScoreToFile(p);
+            TopScores topScores = fileHandler.readTopScoreFile();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("winner-top-scores-view.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);

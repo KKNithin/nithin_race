@@ -65,9 +65,7 @@ public class PlayerAndObstacleTest {
             GameViewController mockGVC = mock(GameViewController.class);
             StartGame.gvc = mockGVC;
             when(StartGame.gvc.playerMoveResponse()).thenReturn("R","U");
-            StartGame.printBoard();
             StartGame.validateMoveRoll(player1, 4, FORWARD);
-            StartGame.printBoard();
             assertEquals(4, player1.getPositionX());
             assertEquals(3, player1.getPositionY());
         } catch (Exception e) {

@@ -4,7 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +17,12 @@
           <AnchorPane fx:id="gameGridAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="7.0" layoutY="8.0" prefHeight="692.8" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  </GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                     </rowConstraints></GridPane>
                </children>
             </AnchorPane>
           <AnchorPane fx:id="sideGridAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -24,62 +31,62 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Label fx:id="playerName" layoutX="17.0" layoutY="143.0" textFill="#0d7104">
+                              <Label fx:id="comment" layoutX="84.0" layoutY="84.0">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="13.5" />
+                                 </font></Label>
+                              <Label fx:id="playerName" layoutX="17.0" layoutY="132.0" textFill="#0d7104">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font></Label>
-                              <Button fx:id="rollButton" layoutX="104.0" layoutY="137.0" mnemonicParsing="false" onAction="#rollDiceForPlayer" text="Roll Dice!!!" textFill="#0d7104">
+                              <Button fx:id="rollButton" layoutX="109.0" layoutY="127.0" mnemonicParsing="false" onAction="#rollDiceForPlayer" text="Roll Dice!!!" textFill="#0d7104">
                                  <font>
                                     <Font name="Arial Black" size="14.0" />
                                  </font>
                               </Button>
-                              <Label layoutX="10.0" layoutY="38.0" text="Move Dice: ">
+                              <Label layoutX="10.0" layoutY="35.0" text="Move Dice: ">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Label>
-                              <Label layoutX="11.0" layoutY="67.0" text="Direction Dice: ">
+                              <Label layoutX="11.0" layoutY="59.0" text="Direction Dice: ">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Label>
-                              <Label fx:id="moveDice" layoutX="106.0" layoutY="39.0">
+                              <Label fx:id="moveDice" layoutX="106.0" layoutY="36.0">
                                  <font>
                                     <Font name="Calibri Bold Italic" size="13.5" />
                                  </font></Label>
-                              <Label fx:id="directionDice" layoutX="106.0" layoutY="68.0">
+                              <Label fx:id="directionDice" layoutX="106.0" layoutY="60.0">
                                  <font>
                                     <Font name="Calibri Bold Italic" size="13.5" />
                                  </font></Label>
-                              <Label layoutX="11.0" layoutY="95.0" text="Comment:">
+                              <Label layoutX="11.0" layoutY="84.0" text="Comment:">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Label>
-                              <Label layoutX="10.0" layoutY="11.0" text="Current Player: " underline="true">
+                              <Label layoutX="10.0" layoutY="9.0" text="Current Player: " underline="true">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Label>
-                              <Label fx:id="previousPlayerName" layoutX="110.0" layoutY="12.0" textFill="#4830a9">
+                              <Label fx:id="previousPlayerName" layoutX="110.0" layoutY="9.0" textFill="#4830a9">
                                  <font>
                                     <Font name="Calibri Bold Italic" size="16.0" />
                                  </font></Label>
-                              <Button fx:id="stayButton" layoutX="86.0" layoutY="187.0" mnemonicParsing="false" onAction="#stayButtonResponse" text="Stay">
+                              <Button fx:id="stayButton" layoutX="86.0" layoutY="185.0" mnemonicParsing="false" onAction="#stayButtonResponse" text="Stay">
                                  <font>
                                     <Font name="Consolas Bold Italic" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="rightButton" layoutX="155.0" layoutY="186.0" mnemonicParsing="false" onAction="#rightButtonResponse" text="Right">
+                              <Button fx:id="rightButton" layoutX="154.0" layoutY="184.0" mnemonicParsing="false" onAction="#rightButtonResponse" text="Right">
                                  <font>
                                     <Font name="Consolas Bold Italic" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="leftButton" layoutX="15.0" layoutY="188.0" mnemonicParsing="false" onAction="#leftButtonResponse" text="Left">
+                              <Button fx:id="leftButton" layoutX="15.0" layoutY="185.0" mnemonicParsing="false" onAction="#leftButtonResponse" text="Left">
                                  <font>
                                     <Font name="Consolas Bold Italic" size="14.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="comment" layoutX="89.0" layoutY="97.0">
-                                 <font>
-                                    <Font name="Calibri Bold Italic" size="13.5" />
-                                 </font></Label>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="210.0">

@@ -29,7 +29,7 @@ public class SaveToFileTest {
             Constants.allPlayers.add(new Player(0,1,"Aditya", 10));
             Constants.allPlayers.add(new Player(0,1,"Kiran", 20));
             Constants.allPlayers.add(new Player(0,1,"Naveen", 30));
-            fileHandler.writeWinnerScoreToFile(new Player());
+            fileHandler.writeWinnerScoreToFile();
             assertEquals(fileHandler.readTopScoreFile().getPlayerList().size(),10);
 
         } catch (PlayerNameError e) {

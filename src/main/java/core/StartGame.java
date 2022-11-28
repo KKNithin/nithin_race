@@ -14,6 +14,10 @@ import utilities.BoardPrinterCMD;
 import utilities.InitialPlayerPositionService;
 import utilities.InitialTrapPlacementService;
 
+/**
+ *@author Nithin
+ * Start Game is the main class for the actual game logic
+ */
 public class StartGame {
     public static Board b;
     public static Map<Player, Integer> playersInTarPit = new HashMap<>();

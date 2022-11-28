@@ -9,8 +9,16 @@ import static utilities.Constants.allPlayers;
 import core.Player;
 import core.TopScores;
 
+/**
+ * @author Nithin
+ * File Handler class helps save and read top player scores from file
+ */
 public class FileHandler {
 
+    /**
+     * @return TopScores
+     * TopScores object shall have a list of players with scores
+     */
     public TopScores readTopScoreFile() {
         TopScores topScores = new TopScores();
         try {
@@ -30,7 +38,10 @@ public class FileHandler {
         return topScores;
     }
 
-    public void writeWinnerScoreToFile(Player p1) throws IOException, ClassNotFoundException {
+    /**
+     * Shall save all the player scores to a flat file
+     */
+    public void writeWinnerScoreToFile() {
         List<Player> tempTopScores = new ArrayList<>();
         TopScores topScores = new TopScores();
         topScores.setPlayerList(tempTopScores);
@@ -46,8 +57,10 @@ public class FileHandler {
             } else {
                 f.createNewFile();
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("Top Scores file Not found");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
 
@@ -76,9 +89,15 @@ public class FileHandler {
         }
         topScores.setPlayerList(tempTopScores);
 
-        FileOutputStream fileOut = new FileOutputStream("top_scores.ser");
-        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-        objectOut.writeObject(topScores);
-        objectOut.close();
+        try {
+            FileOutputStream fileOut = new FileOutputStream("top_scores.ser");
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(topScores);
+            objectOut.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

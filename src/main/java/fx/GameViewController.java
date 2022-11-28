@@ -208,7 +208,7 @@ public class GameViewController {
             }
         }
         if (p.getPositionX() == 0) {
-            fileHandler.writeWinnerScoreToFile(p);
+            fileHandler.writeWinnerScoreToFile();
             TopScores topScores = fileHandler.readTopScoreFile();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("winner-top-scores-view.fxml"));
             Parent root = fxmlLoader.load();

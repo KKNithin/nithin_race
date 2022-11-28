@@ -55,9 +55,9 @@ public class Board {
         StartGame.gvc.modifyGridTile(ADD_PLAYER, x, y, p, null);
     }
 
-    public void addTempPlayerToPosition(int x, int y, Player p) {
-        this.getPosition(x, y).addPlayer(p);
-        StartGame.gvc.modifyGridTile(ADD_TEMP_PLAYER, x, y, p, null);
+    public void addTempPlayerToPosition(int x, int y) {
+//        this.getPosition(x, y).addPlayer(p);
+        StartGame.gvc.modifyGridTile(ADD_TEMP_PLAYER, x, y, null, null);
     }
     public void setTrap(int x, int y, TrapType trapType) {
         this.getPosition(x, y).setTrap(createTrap(trapType), trapType);

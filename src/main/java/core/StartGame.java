@@ -46,7 +46,7 @@ public class StartGame {
         return topScores;
     }
 
-    public static void writeWinnerScoreToFile(Player p) throws IOException, ClassNotFoundException {
+    public static void writeWinnerScoreToFile(Player p1) throws IOException, ClassNotFoundException {
         List<Player> tempTopScores = new ArrayList<>();
         TopScores topScores = new TopScores();
         topScores.setPlayerList(tempTopScores);
@@ -69,23 +69,26 @@ public class StartGame {
 
         tempTopScores = topScores.getPlayerList();
 
-        boolean isPlayerAlreadyExists = false;
-        for (int i = 0; i < topScores.getPlayerList().size(); i++) {
-            if(p.getName().equalsIgnoreCase(tempTopScores.get(i).getName())) {
-                if(p.getScore() > tempTopScores.get(i).getScore()) {
-                    tempTopScores.get(i).replace(p);
+        for(Player p:allPlayers){
+            boolean isPlayerAlreadyExists = false;
+            for (int i = 0; i < topScores.getPlayerList().size(); i++) {
+                if(p.getName().equalsIgnoreCase(tempTopScores.get(i).getName())) {
+                    if(p.getScore() > tempTopScores.get(i).getScore()) {
+                        tempTopScores.get(i).replace(p);
+                    }
+                    isPlayerAlreadyExists = true;
                 }
-                isPlayerAlreadyExists = true;
+            }
+
+
+            if(tempTopScores.size() == 0 || !isPlayerAlreadyExists) {
+                tempTopScores.add(new Player(p.getName(), p.getScore()));
             }
         }
 
-
-        if(tempTopScores.size() == 0 || !isPlayerAlreadyExists) {
-            tempTopScores.add(new Player(p.getName(), p.getScore()));
-        }
         Collections.sort(tempTopScores);
         if (tempTopScores.size() > 10) {
-            tempTopScores.remove(10);
+            tempTopScores = new ArrayList<>(tempTopScores.subList(0, 10));
         }
         topScores.setPlayerList(tempTopScores);
 
@@ -161,7 +164,7 @@ public class StartGame {
                 j++;
                 moveVal--;
                 if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i,j)) {
-                    b.addTempPlayerToPosition(i, j - 1, b.getPosition(i, j).getPlayer());
+                    b.addTempPlayerToPosition(i, j - 1);
                     gvc.enableButtonsForMovement("U/D/S");
                     String userString = gvc.playerMoveResponse();
                     b.removePlayerFromPosition(i, j - 1);
@@ -180,7 +183,7 @@ public class StartGame {
                 j--;
                 moveVal--;
                 if (isBoundaryCaseAfterMove(i, j) || validateFenceAndPlayer(i,j)) {
-                    b.addTempPlayerToPosition(i, j + 1, b.getPosition(i, j).getPlayer());
+                    b.addTempPlayerToPosition(i, j + 1);
                     gvc.enableButtonsForMovement("U/D/S");
                     String userString = gvc.playerMoveResponse();
                     b.removePlayerFromPosition(i, j + 1);
@@ -214,7 +217,7 @@ public class StartGame {
                     return new int[]{-1, j};
                 }
                 if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i,j)) {
-                    b.addTempPlayerToPosition(i + 1, j, b.getPosition(i, j).getPlayer());
+                    b.addTempPlayerToPosition(i + 1, j);
                     String userInput = queryString(j);
                     b.removePlayerFromPosition(i + 1, j);
                     if (userInput.equalsIgnoreCase("S")) {
@@ -230,7 +233,7 @@ public class StartGame {
                 i++;
                 moveVal--;
                 if (!isBoundaryCaseAfterMove(i, j) && validateFenceAndPlayer(i,j)) {
-                    b.addTempPlayerToPosition(i - 1, j, b.getPosition(i, j).getPlayer());
+                    b.addTempPlayerToPosition(i - 1, j);
                     String userInput = queryString(j);
                     b.removePlayerFromPosition(i - 1, j);
                     if (userInput.equalsIgnoreCase("S")) {

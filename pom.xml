@@ -60,70 +60,18 @@
             <version>4.0.16-alpha</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <!--<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.testfx/testfx-junit -->
-        <!--<dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit</artifactId>
-            <version>4.0.15-alpha</version>
-            <scope>test</scope>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.testfx/testfx-core -->
-<!--
         <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-core</artifactId>
-            <version>4.0.15-alpha</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.6.1</version>
             <scope>test</scope>
         </dependency>
--->
-
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.6.1</version>
             <scope>test</scope>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
-        <!--<dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>1.6.2</version>
-            <scope>test</scope>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito -->
-        <!--<dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito</artifactId>
-            <version>1.5.1</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.mockito</groupId>
-                    <artifactId>mockito-all</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito-common -->
-       <!-- <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito-common</artifactId>
-            <version>1.6.5</version>
-            <scope>test</scope>
-        </dependency>-->
-
-
+        </dependency>
     </dependencies>
 
     <build>

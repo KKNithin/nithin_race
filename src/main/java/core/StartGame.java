@@ -15,14 +15,24 @@ import utilities.InitialPlayerPositionService;
 import utilities.InitialTrapPlacementService;
 
 /**
- *@author Nithin
+ * @author Nithin
  * Start Game is the main class for the actual game logic
  */
 public class StartGame {
     public static Board b;
+    /**
+     * List to hold players and their number of times to be in pit
+     */
     public static Map<Player, Integer> playersInTarPit = new HashMap<>();
+    /**
+     * Java FX view controller from main game screen
+     */
     public static GameViewController gvc;
 
+    /**
+     * @param gameViewController
+     * Main method is called by the Java FX to initialize the backend
+     */
     public static void main(GameViewController gameViewController) {
         gvc = gameViewController;
         b = new Board(rows, columns);
@@ -35,6 +45,13 @@ public class StartGame {
     }
 
 
+    /**
+     * @param player
+     * @return Boolean
+     * Shall check the eligibility of player
+     * False if he is in pit and the count is not 0
+     * True if he is not in pit
+     */
     public static boolean isEligibleToRoll(Player p) {
         Integer noOfTimes = playersInTarPit.get(p);
         if (null == noOfTimes) {
@@ -52,6 +69,14 @@ public class StartGame {
         }
     }
 
+    /**
+     * @param player
+     * @param moveRollVal
+     * @param dirRollVal
+     * @return
+     * @throws BoundaryCaseException
+     * Validates the roll, moves the player and calculates the score for it
+     */
     public static boolean validateMoveRoll(Player p, int moveRollVal, Directions dirRollVal) throws BoundaryCaseException {
         int x = p.getPositionX();
         int y = p.getPositionY();
@@ -93,6 +118,15 @@ public class StartGame {
         return true;
     }
 
+    /**
+     * @param x
+     * @param y
+     * @param moveVal
+     * @param isRight
+     * @return
+     * Moves the player horizontally in case of fence and player as obstacle
+     * asks the user input to change the direction to Up, Stay or Down
+     */
     public static int[] moveHorizontally(int x, int y, int moveVal, Boolean isRight) {
         int i = x;
         int j = y;
@@ -139,10 +173,26 @@ public class StartGame {
         return new int[]{i, j};
     }
 
+    /**
+     * @param i
+     * @param j
+     * @return
+     * Validates the position with Fence or player
+     * if so returns true else returns false
+     */
     public static Boolean validateFenceAndPlayer(int i, int j) {
         return (b.getTrapType(i, j) == FENCE) || (b.getPosition(i, j).getPlayer() != null);
     }
 
+    /**
+     * @param x
+     * @param y
+     * @param moveVal
+     * @param isForward
+     * @return
+     * Moves the player vertically in case of fence and player as obstacle
+     * asks the user input to change the direction to Left, Stay or Right
+     */
     public static int[] moveVertically(int x, int y, int moveVal, Boolean isForward) {
         int i = x;
         int j = y;
@@ -188,6 +238,11 @@ public class StartGame {
         return new int[]{i, j};
     }
 
+    /**
+     * @param col
+     * @return
+     * Constructs a string to enable buttons for user by validating the boundary cases
+     */
     public static String queryString(int col) {
         String userQues = "S";
         if (col != 0 && col != b.getColumns() - 1) {
@@ -206,6 +261,12 @@ public class StartGame {
     }
 
 
+    /**
+     * @param x
+     * @param y
+     * @return
+     * True if it hits the boundary after move else returns false
+     */
     public static boolean isBoundaryCaseAfterMove(int x, int y) {
         int bx = b.getRows();
         int by = b.getColumns();
@@ -217,6 +278,16 @@ public class StartGame {
     }
 
 
+    /**
+     * @param x
+     * @param y
+     * @param moveVal
+     * @param dirVal
+     * @return
+     * @throws InvalidMoveException
+     * Moves the player based on the direction value provided
+     * Shall return the end value in case of crossing the boundary of board
+     */
     public static int[] move(int x, int y, int moveVal, Directions dirVal) throws InvalidMoveException {
         int tempx, tempy;
         int temp[];

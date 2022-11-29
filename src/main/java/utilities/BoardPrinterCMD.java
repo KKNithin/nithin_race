@@ -3,8 +3,15 @@ package utilities;
 import static core.StartGame.b;
 import static utilities.Constants.TrapType.*;
 
+/**
+ * @author Nithin
+ * Has methods to print board, which helps to debug
+ */
 public class BoardPrinterCMD {
 
+    /**
+     * prints the board on command prompt
+     */
     public static void printBoard() {
         for (int i = 0; i < b.getRows(); i++) {
             for (int j = 0; j < b.getColumns(); j++) {
@@ -15,6 +22,11 @@ public class BoardPrinterCMD {
         }
     }
 
+    /**
+     * @param i
+     * @param j
+     * Prints each tile of board with required identification
+     */
     public static void printTile(int i, int j) {
         if (b.getPosition(i, j).getTrapType() == FENCE) {
             System.out.print("P");

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static utilities.Constants.TrapType.*;
-import static utilities.Constants.selectedDifficulty;
+import static utilities.Constants.difficultyLevel;
 import core.Board;
 
 public class InitialTrapPlacementService {
@@ -17,9 +17,9 @@ public class InitialTrapPlacementService {
         Integer row = Constants.rows - 2;
         Integer col = Constants.columns;
         Integer noOfObstacles = (row * col) / 6;
-        if (selectedDifficulty.equalsIgnoreCase("Medium")) {
+        if (difficultyLevel.equalsIgnoreCase("Medium")) {
             noOfObstacles = (row * col) / 5;
-        } else if (selectedDifficulty.equalsIgnoreCase("Difficult")) {
+        } else if (difficultyLevel.equalsIgnoreCase("Difficult")) {
             noOfObstacles = (row * col) / 4;
         }
         ArrayList<ArrayList<String>> eligiblePositions = new ArrayList<>();

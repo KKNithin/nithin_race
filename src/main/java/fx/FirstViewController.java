@@ -2,7 +2,7 @@ package fx;
 
 import java.io.IOException;
 
-import static utilities.Constants.selectedDifficulty;
+import static utilities.Constants.difficultyLevel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,7 +65,7 @@ public class FirstViewController {
             rows = Integer.parseInt(rowMenu.getText());
             columns = Integer.parseInt(colMenu.getText());
             noOfPlayers = Integer.parseInt(playerMenu.getText());
-            selectedDifficulty = difficultyLevelMenu.getText();
+            difficultyLevel = difficultyLevelMenu.getText();
             if (noOfPlayers > columns) {
                 errorLabel.setText("No. of players should be lesser than No. of columns");
             } else {

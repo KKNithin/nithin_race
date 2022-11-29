@@ -43,7 +43,7 @@ public class TeleportationObstacleTest {
         Constants.columns = 8;
         StartGame.b = new Board(8, 8);
         Constants.playerNames.add("Nithin");
-        NithinRace.initialise();
+        NithinRace.initialiseImageMaps();
         StartGame.gvc.setUpGameGridForTest();
         player1 = new Player(7, 4, "Nithin", 50, "black");
         StartGame.b.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);

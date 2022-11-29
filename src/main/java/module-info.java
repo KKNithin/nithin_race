@@ -1,3 +1,6 @@
+/**
+ * @author Nithin
+ */
 module race.game.nithinfxrace {
     requires javafx.controls;
     requires javafx.fxml;

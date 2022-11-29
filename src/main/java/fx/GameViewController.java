@@ -26,6 +26,16 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import utilities.*;
 
+/**
+ * @author Nithin
+ * Controller for the main game Java FX screen
+ * <p>
+ *     It has three views,
+ *     First is the game board with gird of rows and columns
+ *     Second is the player control view, with roll dice and direction buttons and player score view.
+ *     Third is the score board with scores of all the players in the current game.
+ * </p>
+ */
 public class GameViewController {
 
     @FXML
@@ -76,6 +86,9 @@ public class GameViewController {
 
     private FileHandler fileHandler = new FileHandler();
 
+    /**
+     * Sets size of the child anchor panes and grid pane based on the screen size
+     */
     public void setGameViewScreen() {
         mainGameAnchor.setPrefWidth(screenWidth);
         mainGameAnchor.setPrefHeight(screenHeight);
@@ -90,6 +103,9 @@ public class GameViewController {
         stayButton.setDisable(true);
     }
 
+    /**
+     * Initialises the game grid pane with initial players and obstacles.
+     */
     public void initializeGrid() {
         reqTileWidth = (screenWidth * 0.75) / Constants.columns;
         reqTileHeight = (screenHeight - 100) / Constants.rows;
@@ -118,6 +134,18 @@ public class GameViewController {
         playerName.setText(allPlayers.get(currentPlayer).getName());
     }
 
+    /**
+     * @param type Type of grid operation to be performed.
+     * @param row Row position of player/obstacle
+     * @param column Column position of player/obstacle
+     * @param player Player object to be placed/removed
+     * @param obstacle Obstacle type to be placed/removed
+     * @param com Comment to be displayed
+     * <p>
+     *            This method shall removes any player/obstacle placed on the initial grid tile.
+     *            Based on the given operation type it shall add/remove the required player/obstacle.
+     * </p>
+     */
     public void modifyGridTile(Constants.GridOperationtype type, int row, int column, Player player,
                                TrapType obstacle, String com) {
         StackPane stackPane = (StackPane) gameGrid.lookup("#" + String.valueOf(row) + String.valueOf(column));
@@ -148,12 +176,29 @@ public class GameViewController {
         }
     }
 
+    /**
+     * @param type Type of grid operation to be performed.
+     * @param row Row position of player/obstacle
+     * @param column Column position of player/obstacle
+     * @param player Player object to be placed/removed
+     * @param obstacle Obstacle type to be placed/removed
+     * <p>
+     *     This is a support method without comment parameter
+     * </p>
+     */
     public void modifyGridTile(Constants.GridOperationtype type, int row, int column, Player player,
                                TrapType obstacle) {
         modifyGridTile(type, row, column, player,
                 obstacle, null);
     }
 
+    /**
+     * @param stackPane Stack pane object of the tile
+     * @param filePath Image file path
+     * <p>
+     *      This is a helper method which shall fit the image to the tile size.
+     * </p>
+     */
     public void modifyImageOnGridTile(StackPane stackPane, String filePath) {
         File imageFile = new File(filePath);
         ImageView imageView = new ImageView(imageFile.toURI().toString());
@@ -164,6 +209,10 @@ public class GameViewController {
         stackPane.getChildren().add(imageView);
     }
 
+    /**
+     * @param player Player object
+     * <p>Updates the score of the given player on screen</p>
+     */
     public void updateScore(Player player) {
         HBox hBox = (HBox) scoreVbox.lookup("#" + player.getName());
         if(null!=hBox){
@@ -171,6 +220,10 @@ public class GameViewController {
             label.setText(String.valueOf(player.getScore()));
         }
     }
+
+    /**
+     * Initialises the score board for all the players of current game.
+     */
     public void initializeScore() {
         for (String player : playerNames) {
             Label name = new Label(player);
@@ -185,7 +238,18 @@ public class GameViewController {
             scoreVbox.getChildren().add(hbox);
         }
     }
-    public void rollDiceForPlayer() throws BoundaryCaseException, IOException, ClassNotFoundException {
+
+    /**
+     * @throws BoundaryCaseException Boundary exception
+     * @throws IOException If the fxml is not valid.
+     * <p>
+     *     This method shall roll the dice for a player and invoke the backend to move the player.
+     *     It shall first check the eligibility of player to make a move.
+     *     Once the game is done, it shall invoke the file handler to save the players to top score list.
+     *     It shall switch the screen context to the winner screen view.
+     * </p>
+     */
+    public void rollDiceForPlayer() throws BoundaryCaseException, IOException {
         rollButton.setDisable(true);
         comment.setText("");
         Player p = allPlayers.get(currentPlayer);
@@ -229,6 +293,12 @@ public class GameViewController {
         rollButton.setDisable(false);
     }
 
+    /**
+     * @param str String to decide the buttons to be enabled
+     * <p>
+     *      Helper method to enable eligible of three buttons based on the string provided.
+     * </p>
+     */
     public void enableButtonsForMovement(String str) {
         String[] strArray = str.split("/");
         for (String s : strArray) {
@@ -254,6 +324,13 @@ public class GameViewController {
         }
     }
 
+    /**
+     * @return String button text
+     * <p>
+     *    It enters a nested loop, waits of the players input.
+     *    Once the input is received it disables all the movement buttons and returns the button text to caller.
+     * </p>
+     */
     public String playerMoveResponse() {
         String buttonResponse = (String) Platform.enterNestedEventLoop(waitKey);
         String res = String.valueOf(buttonResponse.toCharArray()[0]);
@@ -263,21 +340,37 @@ public class GameViewController {
         return res;
     }
 
+    /**
+     * Exits the nested loop once the right button is pressed by the user.
+     */
     public void rightButtonResponse() {
         buttonResponse = rightButton.getText();
         Platform.exitNestedEventLoop(waitKey, buttonResponse);
     }
 
+    /**
+     * Exits the nested loop once the left button is pressed by the user.
+     */
     public void leftButtonResponse() {
         buttonResponse = leftButton.getText();
         Platform.exitNestedEventLoop(waitKey, buttonResponse);
     }
 
+    /**
+     * Exits the nested loop once the middle/stay button is pressed by the user.
+     */
     public void stayButtonResponse() {
         buttonResponse = stayButton.getText();
         Platform.exitNestedEventLoop(waitKey, buttonResponse);
     }
 
+    /**
+     * @param players List of players to be displayed
+     * @return Name of selected player
+     * <p>
+     *     Method shall display a choice dialog if the number of players are greater than 1.
+     * </p>
+     */
     public String showTeleportationDialog(List<String> players) {
 
         String playerChoosen = players.get(0);
@@ -298,6 +391,10 @@ public class GameViewController {
         return playerChoosen;
     }
 
+
+    /**
+     * Support method used to initialise the game grid for Junit tests.
+     */
     public void setUpGameGridForTest() {
         for (int i = 0; i < Constants.rows; i++) {
             for (int j = 0; j < Constants.columns; j++) {

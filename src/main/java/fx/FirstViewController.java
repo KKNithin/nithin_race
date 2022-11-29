@@ -14,6 +14,10 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import utilities.Constants;
 
+/**
+ * @author Nithin
+ * Controller for the initial board details request screen of Java FX
+ */
 public class FirstViewController {
     @FXML
     private Button FirstSceneOK;
@@ -34,6 +38,9 @@ public class FirstViewController {
     private Integer columns;
     private Integer noOfPlayers;
 
+    /**
+     * Shall initialise the row, column, number of player and difficulty level dropdown menus.
+     */
     public void init() {
         for (int i = 4; i < 20; i++) {
             MenuItem rowItem = new MenuItem(String.valueOf(i));
@@ -59,6 +66,15 @@ public class FirstViewController {
         difficultyLevelMenu.getItems().add(medium);
         difficultyLevelMenu.getItems().add(difficult);
     }
+
+    /**
+     * Shall be called when the OK button is pressed by the user.
+     * <p>
+     *     Validates the given row, column, and number of players input.
+     *     Error message is shown if the number of players are more than column.
+     *     Shall store the input details and switch to the next screen if everything is valid.
+     * </p>
+     */
     @FXML
     protected void processFirstSecneOKEvent() {
         try {

@@ -8,6 +8,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * @author Nithin
+ * Controller for the final winner announcement screen.
+ */
 public class WinnerTopScoresViewController {
     @FXML
     private TableView topScoreTable;
@@ -22,6 +26,10 @@ public class WinnerTopScoresViewController {
     @FXML
     private Label winnerPlayerScore;
 
+    /**
+     * @param topScores All the top scores to be displayed.
+     * @param currentWinner Current game winner.
+     */
     public void initialize(TopScores topScores, Player currentWinner) {
         winnerPlayerName.setText(currentWinner.getName());
         winnerPlayerScore.setText(String.valueOf(currentWinner.getScore()));

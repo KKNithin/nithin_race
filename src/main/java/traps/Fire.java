@@ -7,9 +7,21 @@ import core.Player;
 import fx.GameViewController;
 import utilities.Constants;
 
+/**
+ * @author Nithin
+ * Fire obstacle implementation
+ */
 public class Fire implements Trap{
 
 
+    /**
+     * @param b             Board
+     * @param gvc           GameViewController
+     * @param lastX         Previous row position of player
+     * @param lastY         Previous column position of player
+     * @param currentPlayer Current player object
+     * @param initialPlayer Initial player object
+     */
     public void applyTrapRules(Board b, GameViewController gvc, int lastX, int lastY, Player currentPlayer,
                                Player initialPlayer){
         int x = currentPlayer.getPositionX();

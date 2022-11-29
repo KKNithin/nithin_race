@@ -15,9 +15,13 @@ import static utilities.Constants.obstacleImages;
  * Main class for starting game in Java FX
  */
 public class NithinRace extends Application {
+    /**
+     * @param stage Default stage to be initialised by Java FX
+     * @throws IOException If the provided fxml is faulty
+     */
     @Override
     public void start(Stage stage) throws IOException {
-        initialise();
+        initialiseImageMaps();
         FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("first-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         FirstViewController fvc = fxmlLoader.getController();
@@ -27,11 +31,17 @@ public class NithinRace extends Application {
         stage.show();
     }
 
+    /**
+     * @param args System arguments
+     */
     public static void main(String[] args) {
         launch();
     }
 
-    public static void initialise() {
+    /**
+     * Initialises the image maps of obstacles and its types respectively.
+     */
+    public static void initialiseImageMaps() {
         obstacleImages.put(Constants.TrapType.FENCE, "src/main/resources/images/fence.png");
         obstacleImages.put(Constants.TrapType.FIRE, "src/main/resources/images/fire.png");
         obstacleImages.put(Constants.TrapType.TAR_PIT, "src/main/resources/images/tar_pit.png");

@@ -1,12 +1,8 @@
 package fx;
 
 import java.io.IOException;
-import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.List;
 
 import static utilities.Constants.*;
-import core.StartGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +14,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * @author Nithin
+ * Controller for the player names request view.
+ */
 public class SecondViewController {
 
     @FXML
@@ -36,15 +34,18 @@ public class SecondViewController {
     @FXML
     private Button secondOKButton;
 
-    //    private List<String> playerIds = new ArrayList<>();
 
+    /**
+     * @param noOfPlayers Total number of players
+     * <p>
+     *      Sets the text fields to enter the player names
+     * </p>
+     */
     protected void setFieldsToAcceptPlayerNames(int noOfPlayers) {
         for (int i = 1; i <= noOfPlayers; i++) {
             String num = i < 10 ? ("0" + i) : String.valueOf(i);
-//            Label l = new Label("Player(" + i + ")");
             TextField tf = new TextField("");
             String id = "player" + i + "tf";
-//            playerIds.add(id);
             tf.setId(id);
             HBox hBox = new HBox(new Label("Player (" + num + ")"), tf);
             hBox.setMargin(tf, new Insets(0, 0, 20, 60));
@@ -53,7 +54,15 @@ public class SecondViewController {
         }
     }
 
-    public void getPlayerNames(ActionEvent actionEvent) throws IOException {
+    /**
+     * @throws IOException If the fxml of next screen is not valid
+     * <p>
+     *     Validates the inputs provided by user, stores the details.
+     *     Displays appropriate message if a duplicate name is entered by user.
+     *     Shall switch the context of the current screen to the main game screen.
+     * </p>
+     */
+    public void getPlayerNames() throws IOException {
         String playerName = null;
         for (Node node :
                 secondPaneVbox.getChildren()) {

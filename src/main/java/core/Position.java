@@ -42,8 +42,8 @@ public class Position {
     }
 
     /**
-     * @param trap
-     * @param trapType
+     * @param trap Trap object to be set
+     * @param trapType Type of trap to be set
      * sets trap object and trap type
      */
     public void setTrap(Trap trap, TrapType trapType) {

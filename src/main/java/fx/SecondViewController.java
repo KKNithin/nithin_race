@@ -64,8 +64,11 @@ public class SecondViewController {
                 playerName = tf.getText();
                 if (playerName.isEmpty()) {
                     secondBottomLabel.setText("Please enter all the Names properly");
+                } else if(!playerNames.contains(playerName)){
+                        playerNames.add(playerName);
                 } else {
-                    playerNames.add(playerName);
+                    secondBottomLabel.setText("Player Name: '"+playerName + "'" + ", seems to be there - Please " +
+                            "keep the names unique");
                 }
             } else {
                 throw new RuntimeException();

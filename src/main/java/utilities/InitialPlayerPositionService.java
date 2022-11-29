@@ -3,11 +3,18 @@ package utilities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static utilities.Constants.initialScore;
 import static utilities.Constants.playerColors;
 import core.Player;
-import exceptions.PlayerNameError;
 
+/**
+ * @author Nithin
+ * Used to decide all players initial positions
+ */
 public class InitialPlayerPositionService {
+    /**
+     * Assigns initial position and color to each player
+     */
     public static void placePlayers() {
         Random generate = new Random();
         ArrayList<String> eligiblePositions = new ArrayList<>();
@@ -18,23 +25,20 @@ public class InitialPlayerPositionService {
         }
         for (String name :
                 Constants.playerNames) {
-            try {
-                Integer size = eligiblePositions.size();
-                String y = null;
-                if (size > 0) {
-                    Integer rand = generate.nextInt(size);
-                    y = eligiblePositions.get(rand);
+            Integer size = eligiblePositions.size();
+            String y = null;
+            if (size > 0) {
+                Integer rand = generate.nextInt(size);
+                y = eligiblePositions.get(rand);
 
-                } else {
-                    y = eligiblePositions.get(0);
-                }
-                Constants.allPlayers.add(new Player(bottomRow, Integer.valueOf(y), name, 50, playerColors[Integer.valueOf(y)]));
-                Constants.playersInitialPos.add(new Player(bottomRow, Integer.valueOf(y), name, 50,
-                        playerColors[Integer.valueOf(y)]));
-                eligiblePositions.remove(y);
-            } catch (PlayerNameError e) {
-                throw new RuntimeException(e);
+            } else {
+                y = eligiblePositions.get(0);
             }
+            Constants.allPlayers.add(new Player(bottomRow, Integer.valueOf(y), name, initialScore,
+                    playerColors[Integer.valueOf(y)]));
+            Constants.playersInitialPos.add(new Player(bottomRow, Integer.valueOf(y), name, initialScore,
+                    playerColors[Integer.valueOf(y)]));
+            eligiblePositions.remove(y);
         }
     }
 }

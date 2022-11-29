@@ -92,4 +92,14 @@ public class Constants {
      */
     public static String[] playerColors = new String[]{"black", "blue-d", "yellow", "blue-l", "brown", "gray-d", "red",
             "gray-l", "green-d", "orange", "green-l", "maroon", "pink-d", "violet-d", "pink-l"};
+
+    /**
+     * File path used for storing the top 10 player score details
+     */
+    public static String topScoresFile = "src/main/resources/top_scores.ser";
+
+    /**
+     * Initial score for each player
+     */
+    public static int initialScore = 50;
 }

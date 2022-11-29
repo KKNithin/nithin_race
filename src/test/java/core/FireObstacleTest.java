@@ -1,6 +1,7 @@
 package core;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utilities.Constants.Directions.BACKWARD;
@@ -45,6 +46,7 @@ public class FireObstacleTest {
         StartGame.gvc.setUpGameGridForTest();
         player1 = new Player(7, 4, "Nithin", 50, "black");
         StartGame.b.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
+        Constants.playersInitialPos = new ArrayList<>();
         Constants.playersInitialPos.add(new Player(7, 4, "Nithin", 50, "black"));
         player2 = new Player(2, 5, "Chethan", 50, "black");
         StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
@@ -106,7 +108,7 @@ public class FireObstacleTest {
     public void fireObstacle_Backward_4_Test() {
         try {
             StartGame.validateMoveRoll(player2, 4, BACKWARD);
-            assertEquals(2, player2.getPositionX());
+            assertEquals(7, player2.getPositionX());
             assertEquals(5, player2.getPositionY());
         } catch (BoundaryCaseException e) {
             throw new RuntimeException(e);
@@ -116,7 +118,7 @@ public class FireObstacleTest {
     public void fireObstacle_Backward_3_Test() {
         try {
             StartGame.validateMoveRoll(player2, 3, BACKWARD);
-            assertEquals(2, player2.getPositionX());
+            assertEquals(7, player2.getPositionX());
             assertEquals(5, player2.getPositionY());
         } catch (BoundaryCaseException e) {
             throw new RuntimeException(e);
@@ -126,7 +128,7 @@ public class FireObstacleTest {
     public void fireObstacle_Backward_2_Test() {
         try {
             StartGame.validateMoveRoll(player2, 2, BACKWARD);
-            assertEquals(2, player2.getPositionX());
+            assertEquals(7, player2.getPositionX());
             assertEquals(5, player2.getPositionY());
         } catch (BoundaryCaseException e) {
             throw new RuntimeException(e);
@@ -136,7 +138,7 @@ public class FireObstacleTest {
     public void fireObstacle_Backward_1_Test() {
         try {
             StartGame.validateMoveRoll(player2, 1, BACKWARD);
-            assertEquals(2, player2.getPositionX());
+            assertEquals(7, player2.getPositionX());
             assertEquals(5, player2.getPositionY());
         } catch (BoundaryCaseException e) {
             throw new RuntimeException(e);

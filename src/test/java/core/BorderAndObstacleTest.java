@@ -1,14 +1,12 @@
 package core;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static utilities.Constants.Directions.FORWARD;
 import static utilities.Constants.TrapType.FENCE;
-import static utilities.Constants.allPlayers;
 import fx.GameViewController;
 import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +22,7 @@ import org.testfx.framework.junit5.Start;
 import utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
-public class BorderAndObstacle {
+public class BorderAndObstacleTest {
     Player player1, player2;
 
     @Start

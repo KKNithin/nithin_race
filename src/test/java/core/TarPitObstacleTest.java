@@ -42,11 +42,13 @@ public class TarPitObstacleTest {
         Constants.rows = 8;
         Constants.columns = 8;
         StartGame.b = new Board(8, 8);
+        Constants.playerNames = new ArrayList<>();
         Constants.playerNames.add("Nithin");
         NithinRace.initialise();
         StartGame.gvc.setUpGameGridForTest();
         player1 = new Player(7, 4, "Nithin", 50, "black");
         StartGame.b.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
+        Constants.playersInitialPos = new ArrayList<>();
         Constants.playersInitialPos.add(new Player(7, 4, "Nithin", 50, "black"));
         player2 = new Player(2, 5, "Chethan", 50, "black");
         StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);

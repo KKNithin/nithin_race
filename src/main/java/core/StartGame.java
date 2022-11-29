@@ -19,6 +19,9 @@ import utilities.InitialTrapPlacementService;
  * Start Game is the main class for the actual game logic
  */
 public class StartGame {
+    /**
+     * Board object used in the entire game
+     */
     public static Board b;
     /**
      * List to hold players and their number of times to be in pit

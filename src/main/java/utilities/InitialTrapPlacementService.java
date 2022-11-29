@@ -7,6 +7,10 @@ import static utilities.Constants.TrapType.*;
 import static utilities.Constants.difficultyLevel;
 import core.Board;
 
+/**
+ * @author Nithin
+ * Used to place the obstacles
+ */
 public class InitialTrapPlacementService {
 
 

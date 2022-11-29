@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static utilities.Constants.allPlayers;
+import static utilities.Constants.topScoresFile;
 import core.Player;
 import core.TopScores;
 
@@ -22,18 +23,14 @@ public class FileHandler {
     public TopScores readTopScoreFile() {
         TopScores topScores = new TopScores();
         try {
-            File f = new File("top_scores.ser");
-            if(f.exists() && !f.isDirectory()) {
-                FileInputStream fileIn = new FileInputStream(f);
-                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-                Object obj = objectIn.readObject();
-                topScores = (TopScores) obj;
-                objectIn.close();
-            } else {
-                f.createNewFile();
-            }
+            File f = new File(topScoresFile);
+            FileInputStream fileIn = new FileInputStream(f);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            Object obj = objectIn.readObject();
+            topScores = (TopScores) obj;
+            objectIn.close();
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Top Scores file Not found");
+            System.out.println("Unable to read from file: " + topScores + " " + e);
         }
         return topScores;
     }
@@ -47,8 +44,8 @@ public class FileHandler {
         topScores.setPlayerList(tempTopScores);
 
         try {
-            File f = new File("top_scores.ser");
-            if(f.exists() && !f.isDirectory()) {
+            File f = new File(topScoresFile);
+            if (f.exists() && !f.isDirectory()) {
                 FileInputStream fileIn = new FileInputStream(f);
                 ObjectInputStream objectIn = new ObjectInputStream(fileIn);
                 Object obj = objectIn.readObject();
@@ -58,19 +55,18 @@ public class FileHandler {
                 f.createNewFile();
             }
         } catch (IOException e) {
-            System.out.println("Top Scores file Not found");
+            System.out.println("Top Scores file Not found " + e);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Object stored in the Top Scores file is invalid " + e);
         }
-
 
         tempTopScores = topScores.getPlayerList();
 
-        for(Player p:allPlayers){
+        for (Player p : allPlayers) {
             boolean isPlayerAlreadyExists = false;
             for (int i = 0; i < topScores.getPlayerList().size(); i++) {
-                if(p.getName().equalsIgnoreCase(tempTopScores.get(i).getName())) {
-                    if(p.getScore() > tempTopScores.get(i).getScore()) {
+                if (p.getName().equalsIgnoreCase(tempTopScores.get(i).getName())) {
+                    if (p.getScore() > tempTopScores.get(i).getScore()) {
                         tempTopScores.get(i).replace(p);
                     }
                     isPlayerAlreadyExists = true;
@@ -78,7 +74,7 @@ public class FileHandler {
             }
 
 
-            if(tempTopScores.size() == 0 || !isPlayerAlreadyExists) {
+            if (tempTopScores.size() == 0 || !isPlayerAlreadyExists) {
                 tempTopScores.add(new Player(p.getName(), p.getScore()));
             }
         }
@@ -90,14 +86,14 @@ public class FileHandler {
         topScores.setPlayerList(tempTopScores);
 
         try {
-            FileOutputStream fileOut = new FileOutputStream("top_scores.ser");
+            FileOutputStream fileOut = new FileOutputStream(topScoresFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(topScores);
             objectOut.close();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Top Scores file Not found " + e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Not able to write to Top scores file " + e);
         }
     }
 }

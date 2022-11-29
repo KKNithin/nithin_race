@@ -63,7 +63,7 @@ public class Position {
     }
 
     /**
-     * @param Player
+     * @param p Player object
      * adds player to position
      */
     public void addPlayer(Player p) {

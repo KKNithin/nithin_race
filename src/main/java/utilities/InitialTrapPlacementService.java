@@ -3,6 +3,7 @@ package utilities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static core.StartGame.b;
 import static utilities.Constants.TrapType.*;
 import static utilities.Constants.difficultyLevel;
 import core.Board;
@@ -14,7 +15,15 @@ import core.Board;
 public class InitialTrapPlacementService {
 
 
-    public static void placeObstacles(Board b) {
+    /**
+     * Method which places the obstacles on board
+     * <p>
+     *     It decides the total number of obstacles needed for the game based
+     *     on difficulty level.
+     *     It Chooses a random row and column to place the obstacle
+     * </p>
+     */
+    public static void placeObstacles() {
         Constants.TrapType[] traps = new Constants.TrapType[]{FENCE, FIRE, TELEPROTATION_TUNNEL, TAR_PIT};
         Integer trapsCount = traps.length - 1;
         Random generate = new Random();

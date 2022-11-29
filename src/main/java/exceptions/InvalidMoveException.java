@@ -6,7 +6,7 @@ package exceptions;
  */
 public class InvalidMoveException extends Exception{
     /**
-     * @param msg
+     * @param msg message to print
      */
     public InvalidMoveException(String msg) {
         super(msg);

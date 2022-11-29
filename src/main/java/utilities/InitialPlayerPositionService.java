@@ -14,6 +14,9 @@ import core.Player;
 public class InitialPlayerPositionService {
     /**
      * Assigns initial position and color to each player
+     * <p>
+     *     It chooses the color and column for each player.
+     * </p>
      */
     public static void placePlayers() {
         Random generate = new Random();

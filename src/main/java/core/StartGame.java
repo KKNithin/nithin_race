@@ -33,7 +33,7 @@ public class StartGame {
     public static GameViewController gvc;
 
     /**
-     * @param gameViewController
+     * @param gameViewController Game controller of Java Fx
      * Main method is called by the Java FX to initialize the backend
      */
     public static void main(GameViewController gameViewController) {
@@ -43,17 +43,20 @@ public class StartGame {
         for (Player p : allPlayers) {
             b.addPlayerToPosition(p.getPositionX(), p.getPositionY(), p);
         }
-        InitialTrapPlacementService.placeObstacles(b);
+        InitialTrapPlacementService.placeObstacles();
         BoardPrinterCMD.printBoard();
     }
 
 
     /**
-     * @param player
-     * @return Boolean
-     * Shall check the eligibility of player
-     * False if he is in pit and the count is not 0
-     * True if he is not in pit
+     * @param p - player object to check the eligibility
+     * @return Boolean - based on the eligibility
+     * <p>
+     *      Shall check the eligibility of player
+     *      False if he is in pit and the count is not 0
+     *      True if he is not in pit
+     * </p>
+     *
      */
     public static boolean isEligibleToRoll(Player p) {
         Integer noOfTimes = playersInTarPit.get(p);
@@ -73,10 +76,10 @@ public class StartGame {
     }
 
     /**
-     * @param player
-     * @param moveRollVal
-     * @param dirRollVal
-     * @return
+     * @param p Player object
+     * @param moveRollVal Move value of dice
+     * @param dirRollVal Direction value of dice
+     * @return Boolean True if the move is valid and done, else returns false
      * @throws BoundaryCaseException
      * Validates the roll, moves the player and calculates the score for it
      */
@@ -122,11 +125,11 @@ public class StartGame {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param moveVal
-     * @param isRight
-     * @return
+     * @param x row value of position
+     * @param y column value of position
+     * @param moveVal remaining move value of player
+     * @param isRight if the value is true player shall move right else he moves left
+     * @return IntegerArray An array of row and column position
      * Moves the player horizontally in case of fence and player as obstacle
      * asks the user input to change the direction to Up, Stay or Down
      */
@@ -177,9 +180,9 @@ public class StartGame {
     }
 
     /**
-     * @param i
-     * @param j
-     * @return
+     * @param i Row position
+     * @param j Column position
+     * @return Boolean
      * Validates the position with Fence or player
      * if so returns true else returns false
      */
@@ -188,11 +191,11 @@ public class StartGame {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param moveVal
-     * @param isForward
-     * @return
+     * @param x row value of position
+     * @param y column value of position
+     * @param moveVal remaining move value of player
+     * @param isForward if the value is true player shall move forward else he moves backward
+     * @return IntegerArray An integer array of x and y
      * Moves the player vertically in case of fence and player as obstacle
      * asks the user input to change the direction to Left, Stay or Right
      */
@@ -242,8 +245,8 @@ public class StartGame {
     }
 
     /**
-     * @param col
-     * @return
+     * @param col Column position
+     * @return String query string
      * Constructs a string to enable buttons for user by validating the boundary cases
      */
     public static String queryString(int col) {
@@ -265,9 +268,9 @@ public class StartGame {
 
 
     /**
-     * @param x
-     * @param y
-     * @return
+     * @param x Row position
+     * @param y Column position
+     * @return Boolean
      * True if it hits the boundary after move else returns false
      */
     public static boolean isBoundaryCaseAfterMove(int x, int y) {
@@ -282,11 +285,11 @@ public class StartGame {
 
 
     /**
-     * @param x
-     * @param y
-     * @param moveVal
-     * @param dirVal
-     * @return
+     * @param x Row position
+     * @param y Column position
+     * @param moveVal Move value of dice
+     * @param dirVal Direction value of dice
+     * @return IntegerArray Array of row and column position
      * @throws InvalidMoveException
      * Moves the player based on the direction value provided
      * Shall return the end value in case of crossing the boundary of board

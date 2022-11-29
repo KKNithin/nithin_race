@@ -13,28 +13,86 @@ import core.Player;
 public class Constants {
     /**
      * Enum of possible directions
+     * {@link #FORWARD}
+     * {@link #BACKWARD}
+     * {@link #MISS_A_TURN}
      */
-    public enum Directions {FORWARD, BACKWARD, MISS_A_TURN};
+    public enum Directions {
+        /**
+         * Move Forward
+         */
+        FORWARD,
+        /**
+         * Move Backward
+         */
+        BACKWARD,
+        /**
+         * Miss a turn
+         */
+        MISS_A_TURN
+    }
 
     /**
      * Enum of Trap types
-     * Fence: Player cannot cross it, must change direction to move
-     * Fire: Player falling on fire shall start from begining
-     * Teleportation Tunnel: Player shall choose any other player for him to teleport
-     * Tar Pit: Player falling on Tar Pit shall miss his next turn
-     * None: Dummy Trap used for coding purpose
+     * {@link #FENCE}
+     * {@link #FIRE}
+     * {@link #TELEPROTATION_TUNNEL}
+     * {@link #TAR_PIT}
+     * {@link #NONE}
      */
-    public enum TrapType {FENCE, FIRE, TELEPROTATION_TUNNEL, TAR_PIT ,NONE};
+    public enum TrapType {
+        /**
+         * Player cannot cross it, must change direction to move
+         */
+        FENCE,
+        /**
+         * Player falling on fire shall start from begining
+         */
+        FIRE,
+        /**
+         * Player shall choose any other player for him to teleport
+         */
+        TELEPROTATION_TUNNEL,
+        /**
+         * Player falling on Tar Pit shall miss his next turn
+         */
+        TAR_PIT,
+        /**
+         * Dummy Trap used for coding purpose
+         */
+        NONE
+    }
 
     /**
      * Enum of possible operations on grid tile modification
-     * Add player: Removes any existing obstacle and adds the player.
-     * Add Obstacle: Removes existing player and adds an obstacle
-     * Player in Tar: Replaces the Tar pit with an image of player in tar
-     * Add Temp Player: Player when obstructed shall be shown in running position to change the direction
-     * Clear: Shall clear the tile with any Obstacle/Player
+     * {@link #ADD_PLAYER}
+     * {@link #ADD_OBSTACLE}
+     * {@link #PLAYER_IN_TAR}
+     * {@link #ADD_TEMP_PLAYER}
+     * {@link #CLEAR}
      */
-    public enum GridOperationtype {ADD_PLAYER, ADD_OBSTACLE, PLAYER_IN_TAR, ADD_TEMP_PLAYER, CLEAR}
+    public enum GridOperationtype {
+        /**
+         * Removes any existing obstacle and adds the player.
+         */
+        ADD_PLAYER,
+        /**
+         * Removes existing player and adds an obstacle.
+         */
+        ADD_OBSTACLE,
+        /**
+         * Replaces the Tar pit with an image of player in tar.
+         */
+        PLAYER_IN_TAR,
+        /**
+         * Player when obstructed shall be shown in running position to change the direction.
+         */
+        ADD_TEMP_PLAYER,
+        /**
+         * Shall clear the tile with any Obstacle/Player.
+         */
+        CLEAR
+    }
 
     /**
      * Level of difficulty choose before start of game

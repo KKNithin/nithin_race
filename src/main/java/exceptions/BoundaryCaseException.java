@@ -6,7 +6,7 @@ package exceptions;
  */
 public class BoundaryCaseException extends Exception {
     /**
-     * @param msg
+     * @param msg message to print
      */
     public BoundaryCaseException(String msg) {
         super(msg);

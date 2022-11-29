@@ -10,6 +10,10 @@ import java.io.IOException;
 
 import static utilities.Constants.obstacleImages;
 
+/**
+ * @author Nithin
+ * Main class for starting game in Java FX
+ */
 public class NithinRace extends Application {
     @Override
     public void start(Stage stage) throws IOException {

@@ -28,7 +28,7 @@ public class Score implements Serializable {
     }
 
     /**
-     * @param number of points
+     * @param points Number of points
      */
     public void setScore(int points) {
         this.score = points;

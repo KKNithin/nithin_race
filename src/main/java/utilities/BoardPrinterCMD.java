@@ -23,8 +23,8 @@ public class BoardPrinterCMD {
     }
 
     /**
-     * @param i
-     * @param j
+     * @param i Row position
+     * @param j Column position
      * Prints each tile of board with required identification
      */
     public static void printTile(int i, int j) {

@@ -6,7 +6,7 @@ import utilities.Constants.TrapType;
 
 /**
  * @author Nithin
- * Broad class shall hold the size of rows & columns.
+ * Broad class shall hold the size of rows and columns.
  * It holds a position matrix of game board.
  */
 public class Board {
@@ -25,8 +25,8 @@ public class Board {
     private Position[][] board;
 
     /**
-     * @param rows
-     * @param columns
+     * @param rows number of required rows on board
+     * @param columns number of required columns on board
      * Board constructor which take rows and columns
      */
     public Board(int rows, int columns) {
@@ -66,10 +66,9 @@ public class Board {
     }
 
     /**
-     * @param row
-     * @param column
+     * @param x Row position
+     * @param y Column position
      * @return position on board
-     *
      */
     public Position getPosition(int x, int y) {
         if(this.board[x][y] == null) {
@@ -79,8 +78,8 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
+     * @param x Row positon
+     * @param y Column position
      * removes player in the given position
      * Also removes player from the UI Grid
      */
@@ -90,9 +89,9 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param player
+     * @param x Row position
+     * @param y Column position
+     * @param p player object to add
      * Adds player to the given position
      * Also adds player to the UI Grid
      */
@@ -102,8 +101,8 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
+     * @param x Row position
+     * @param y  position
      * Adds a temporary player in running position on to the UI Grid
      */
     public void addTempPlayerToPosition(int x, int y) {
@@ -111,9 +110,9 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param trapType
+     * @param x Row position
+     * @param y Column position
+     * @param trapType type of trap to be set
      * Sets Trap on the board position and UI Grid
      */
     public void setTrap(int x, int y, TrapType trapType) {
@@ -122,10 +121,9 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
-     * @return Trap
-     * Returns Trap in the given position, if there is no trap it returns None
+     * @param x Row position
+     * @param y Column position
+     * @return Trap Returns Trap in the given position, if there is no trap it returns None
      */
     public Trap getTrap(int x, int y) {
         if(null == this.board[x][y]){
@@ -135,8 +133,8 @@ public class Board {
     }
 
     /**
-     * @param x
-     * @param y
+     * @param x Row position
+     * @param y Column position
      * @return Type of Trap
      * Returns the type of Trap in given position, if there is no trap it returns None
      */
@@ -148,7 +146,7 @@ public class Board {
     }
 
     /**
-     * @param trapType
+     * @param trapType type of trap to create
      * @return Trap
      * Creates new Trap object for the given trap type
      */

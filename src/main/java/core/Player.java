@@ -31,10 +31,10 @@ public class Player implements Comparable<Player>, Serializable {
     private Score score;
 
     /**
-     * @param x
-     * @param y
-     * @param name
-     * @param initialPoints
+     * @param x Row position of player
+     * @param y Column position of player
+     * @param name player name
+     * @param initialPoints initial score of player
      * Player Constructor with above parameters
      */
     public Player(int x, int y,String name, int initialPoints) {
@@ -45,11 +45,11 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param name
-     * @param initialPoints
-     * @param color
+     * @param x Row position of player
+     * @param y Column position of player
+     * @param name Player name
+     * @param initialPoints Initial score of player
+     * @param color Player color in UI
      * Player Constructor with above parameters.
      */
     public Player(int x, int y,String name, int initialPoints, String color) {
@@ -61,8 +61,8 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param name
-     * @param score
+     * @param name player name
+     * @param score player score
      * Player Constructor with above parameters
      */
     public Player(String name, int score) {
@@ -91,21 +91,21 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @return name of player
+     * @return Name of player
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @return color of player
+     * @return Color of player
      */
     public String getColor() {
         return color;
     }
 
     /**
-     * @param positionX
+     * @param positionX Row position
      * updates the horizontal position of player
      */
     public void setPositionX(int positionX) {
@@ -113,7 +113,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param positionY
+     * @param positionY Column position
      * updates the vertical position of player
      */
     public void setPositionY(int positionY) {
@@ -121,8 +121,8 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param positionX
-     * @param positionY
+     * @param positionX Row position
+     * @param positionY Column position
      * updates both row and column of the player
      */
     public void setPosition(int positionX, int positionY) {
@@ -131,14 +131,14 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @return score of player
+     * @return Score of player
      */
     public int getScore() {
         return this.score.getScore();
     }
 
     /**
-     * @param points are updated to player
+     * @param points Number of points updated to player
      */
     public void setScore(int points) {
         if(this.score != null){
@@ -150,7 +150,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param player
+     * @param p Player object
      * shall replace the player entirely
      */
     public void replace(Player p) {
@@ -162,15 +162,15 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param points will be updated to the existing player score
+     * @param points Number of points will be updated to the existing player score
      */
     public void updateScore(int points) {
         this.score.updateScoreBy(points);
     }
 
     /**
-     * @param player
-     * @return true if the player names are same else returns false
+     * @param o Player object to be compared
+     * @return Boolean True if the player names are same else returns false
      */
     @Override
     public boolean equals(Object o) {
@@ -181,7 +181,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @return shall give the hash of the player object
+     * @return Shall give the hash of the player object
      */
     @Override
     public int hashCode() {
@@ -189,7 +189,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @return the player object in string format
+     * @return The player object in string format
      */
     @Override
     public String toString() {
@@ -203,8 +203,8 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @param p the object to be compared.
-     * @return true if the score of passing object is greater else return false
+     * @param p Player object to be compared.
+     * @return Boolean True if the score of passing object is greater else return false
      * This method is used by the
      */
     @Override

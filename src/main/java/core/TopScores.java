@@ -21,7 +21,7 @@ public class TopScores implements Serializable {
     }
 
     /**
-     * @param list of players will be updated
+     * @param playerList list of players will be updated
      */
     public void setPlayerList(List<Player> playerList) {
         this.playerList = playerList;

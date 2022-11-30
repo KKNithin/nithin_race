@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import utilities.BoardPrinterCMD;
 import utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
@@ -50,11 +51,15 @@ public class BorderAndObstacleTest {
         StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
         Constants.playersInitialPos.add(new Player(5, 2, "Chethan", 50, "black"));
         StartGame.b.setTrap(6, 6, FENCE);
+        System.out.println("Board Before Start of Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
+        System.out.println("Board After Running Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @Test

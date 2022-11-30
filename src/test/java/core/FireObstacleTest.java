@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import utilities.BoardPrinterCMD;
 import utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
@@ -59,10 +60,14 @@ public class FireObstacleTest {
         StartGame.b.setTrap(4, 5, FIRE);
         StartGame.b.setTrap(5, 5, FIRE);
         StartGame.b.setTrap(6, 5, FIRE);
+        System.out.println("Board Before Start of Test case");
+        BoardPrinterCMD.printBoard();
     }
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
+        System.out.println("Board After Running Test case");
+        BoardPrinterCMD.printBoard();
     }
     @Test
     public void fireObstacle_Forward_4_Test() {

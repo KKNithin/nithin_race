@@ -21,6 +21,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import utilities.BoardPrinterCMD;
 import utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
@@ -52,25 +53,15 @@ public class PlayerAndObstacleTest {
         StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
         Constants.playersInitialPos.add(new Player(5, 2, "Chethan", 50, "black"));
         StartGame.b.setTrap(6, 4, FENCE);
+        System.out.println("Board Before Start of Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
-    }
-
-    @Test
-    public void player_4_Forward_Test() {
-        try {
-            GameViewController mockGVC = mock(GameViewController.class);
-            StartGame.gvc = mockGVC;
-            when(StartGame.gvc.playerMoveResponse()).thenReturn("R","U");
-            StartGame.validateMoveRoll(player1, 4, FORWARD);
-            assertEquals(4, player1.getPositionX());
-            assertEquals(3, player1.getPositionY());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println("Board After Running Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @Test

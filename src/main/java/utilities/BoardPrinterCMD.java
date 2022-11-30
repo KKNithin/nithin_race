@@ -20,6 +20,7 @@ public class BoardPrinterCMD {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     /**

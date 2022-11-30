@@ -3,8 +3,7 @@ package core;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utilities.Constants.Directions.BACKWARD;
-import static utilities.Constants.Directions.FORWARD;
+import static utilities.Constants.Directions.*;
 import exceptions.BoundaryCaseException;
 import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
@@ -131,10 +130,32 @@ public class PlayerBasicMoveTest {
     }
 
     @Test
-    public void movePlayer_Backward_4_Test() {
+    public void movePlayer_Forward_4_Boundary_Test() {
         try {
-            StartGame.validateMoveRoll(player2, 4, BACKWARD);
-            assertEquals(7, player2.getPositionX());
+            StartGame.validateMoveRoll(player2, 4, FORWARD);
+            assertEquals(0, player2.getPositionX());
+            assertEquals(5, player2.getPositionY());
+        } catch (BoundaryCaseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void movePlayer_Backward_4_Boundary_Test() {
+        try {
+            StartGame.validateMoveRoll(player1, 4, BACKWARD);
+            assertEquals(7, player1.getPositionX());
+            assertEquals(4, player1.getPositionY());
+        } catch (BoundaryCaseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void movePlayer_MissATurn_4_Boundary_Test() {
+        try {
+            StartGame.validateMoveRoll(player2, 4, MISS_A_TURN);
+            assertEquals(3, player2.getPositionX());
             assertEquals(5, player2.getPositionY());
         } catch (BoundaryCaseException e) {
             throw new RuntimeException(e);

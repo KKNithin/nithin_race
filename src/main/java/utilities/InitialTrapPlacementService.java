@@ -6,7 +6,6 @@ import java.util.Random;
 import static core.StartGame.b;
 import static utilities.Constants.TrapType.*;
 import static utilities.Constants.difficultyLevel;
-import core.Board;
 
 /**
  * @author Nithin
@@ -25,11 +24,11 @@ public class InitialTrapPlacementService {
      */
     public static void placeObstacles() {
         Constants.TrapType[] traps = new Constants.TrapType[]{FENCE, FIRE, TELEPROTATION_TUNNEL, TAR_PIT};
-        Integer trapsCount = traps.length - 1;
+        int trapsCount = traps.length - 1;
         Random generate = new Random();
-        Integer row = Constants.rows - 2;
-        Integer col = Constants.columns;
-        Integer noOfObstacles = (row * col) / 6;
+        int row = Constants.rows - 2;
+        int col = Constants.columns;
+        int noOfObstacles = (row * col) / 6;
         if (difficultyLevel.equalsIgnoreCase("Medium")) {
             noOfObstacles = (row * col) / 5;
         } else if (difficultyLevel.equalsIgnoreCase("Difficult")) {
@@ -45,10 +44,10 @@ public class InitialTrapPlacementService {
         }
         while (noOfObstacles > 0) {
             trapsCount = trapsCount < 0 ? traps.length - 1 : trapsCount;
-            Integer i = generate.nextInt(eligiblePositions.size());
+            int i = generate.nextInt(eligiblePositions.size());
             ArrayList<String> colEligiblePos = eligiblePositions.get(i);
             if (colEligiblePos.size() > 0 && i != 0) {
-                Integer colRand = generate.nextInt(colEligiblePos.size());
+                int colRand = generate.nextInt(colEligiblePos.size());
                 String j = colEligiblePos.get(colRand);
                 b.setTrap(i, Integer.valueOf(j), traps[trapsCount--]);
                 noOfObstacles--;

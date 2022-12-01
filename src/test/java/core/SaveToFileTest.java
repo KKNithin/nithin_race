@@ -1,6 +1,9 @@
 package core;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static utilities.Constants.topScoresFile;
 import org.junit.jupiter.api.Test;
 import utilities.Constants;
 import utilities.FileHandler;
@@ -11,6 +14,13 @@ public class SaveToFileTest {
 
     @Test
     public void save_13_players_to_list() {
+        try {
+            File f = new File(topScoresFile);
+            f.delete();
+        } catch (NullPointerException e) {
+            System.out.println("Top scores file doesn't exist");
+        }
+
         Constants.allPlayers.add(new Player(0, 1, "Nithin", 100));
         Constants.allPlayers.add(new Player(0, 1, "Karan", 40));
         Constants.allPlayers.add(new Player(0, 1, "Kartik", 70));

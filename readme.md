@@ -188,3 +188,11 @@ Then player shall move to row position < i > and column position < j >
 |  7  |  2  |      Right - R, Up - U      |  4  |  3  |
 |  7  |  2  | Right - R, Up - U, Right - R|  5  |  4  |
 ```
+#### Scenario: Saving excess number of players and their scores to file (SaveToFileTest.java)
+##### Run the command `mvn clean test -Dtest="SaveToFileTest"` to see the output of below test scenarios
+```
+Given 13 players with names and scores
+When each player is inserted to the Top Score file 
+And once all the players are inserted, the file shall be opened 
+Then total number of players stored in the file is 10
+```

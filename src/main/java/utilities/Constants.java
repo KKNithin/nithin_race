@@ -148,8 +148,9 @@ public class Constants {
     /**
      * Player color array
      */
-    public static String[] playerColors = new String[]{"black", "blue-d", "yellow", "blue-l", "brown", "gray-d", "red",
-            "gray-l", "green-d", "orange", "green-l", "maroon", "pink-d", "violet-d", "pink-l"};
+    public static String[] playerColors = new String[]{"black", "blue-d", "yellow", "violet-l", "blue-l", "brown-d",
+            "gray-d", "red", "gray-l", "green-d", "orange", "green-l", "maroon", "pink-d", "violet-d", "pink-l",
+            "brown-l", "white", "rose", "purple"};
 
     /**
      * File path used for storing the top 10 player score details

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="468.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FirstViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="468.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.BoardInputController">
    <children>
       <Label fx:id="rowLabel" layoutX="67.0" layoutY="82.0" text="Enter number of rows on board" />
       <Label fx:id="colLabel" layoutX="67.0" layoutY="117.0" text="Enter number of columns on board" />

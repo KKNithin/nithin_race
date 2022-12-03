@@ -18,7 +18,7 @@ import utilities.Constants;
  * @author Nithin
  * Controller for the initial board details request screen of Java FX
  */
-public class FirstViewController {
+public class BoardInputController {
     @FXML
     private Button FirstSceneOK;
 
@@ -42,7 +42,7 @@ public class FirstViewController {
      * Shall initialise the row, column, number of player and difficulty level dropdown menus.
      */
     public void init() {
-        for (int i = 4; i < 20; i++) {
+        for (int i = 4; i <= 20; i++) {
             MenuItem rowItem = new MenuItem(String.valueOf(i));
             rowItem.setOnAction(e -> rowMenu.setText(((MenuItem) e.getSource()).getText()));
             MenuItem colItem = new MenuItem(String.valueOf(i));
@@ -92,8 +92,8 @@ public class FirstViewController {
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) FirstSceneOK.getScene().getWindow();
-                SecondViewController secondViewController = fxmlLoader.getController();
-                secondViewController.setFieldsToAcceptPlayerNames(noOfPlayers);
+                PlayerInputController playerInputController = fxmlLoader.getController();
+                playerInputController.setFieldsToAcceptPlayerNames(noOfPlayers);
                 stage.setTitle("Nithin's-Race");
                 stage.setScene(scene);
                 stage.show();

@@ -3,7 +3,6 @@ package fx;
 import java.io.IOException;
 
 import static utilities.Constants.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -23,7 +22,7 @@ import javafx.stage.Stage;
  * @author Nithin
  * Controller for the player names request view.
  */
-public class SecondViewController {
+public class PlayerInputController {
 
     @FXML
     private VBox secondPaneVbox;

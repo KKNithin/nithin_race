@@ -54,7 +54,8 @@
                         <Font name="Palatino Linotype Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <Button fx:id="playAgain" layoutX="227.0" layoutY="425.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="131.0" text="Play Again!!!" textFill="#068e16">
+                  <Button fx:id="playAgain" layoutX="227.0" layoutY="425.0" mnemonicParsing="false" prefHeight="53.0"
+                          prefWidth="131.0" text="Play Again!!!" textFill="#068e16" onAction="#startGameFromBegin">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>

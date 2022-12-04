@@ -1,12 +1,21 @@
 package fx.controllers;
 
-import models.core.Player;
-import models.core.TopScores;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import fx.NithinRace;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import static models.utilities.Constants.*;
+import models.core.Player;
+import models.core.TopScores;
 
 /**
  * @author Nithin
@@ -26,6 +35,9 @@ public class WinnerTopScoresViewController {
     @FXML
     private Label winnerPlayerScore;
 
+    @FXML
+    private Button playAgain;
+
     /**
      * Sets the winner screen along with top scores
      * @param topScores All the top scores to be displayed.
@@ -39,5 +51,19 @@ public class WinnerTopScoresViewController {
         for(Player topScorePlayer: topScores.getPlayerList()) {
             topScoreTable.getItems().add(new PlayerScore(topScorePlayer.getName(), topScorePlayer.getScore()));
         }
+    }
+
+    public void startGameFromBegin() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("board-input-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        BoardInputController boardInputController = fxmlLoader.getController();
+        boardInputController.init();
+        playerNames = new ArrayList<>();
+        allPlayers = new ArrayList<>();
+        playersInitialPos = new ArrayList<>();
+        Stage stage = (Stage) playAgain.getScene().getWindow();
+        stage.setTitle("Nithin's-Race");
+        stage.setScene(scene);
+        stage.show();
     }
 }

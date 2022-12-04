@@ -26,8 +26,8 @@ public class NithinRace extends Application {
         initialiseImageMaps();
         FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("board-input-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        BoardInputController fvc = fxmlLoader.getController();
-        fvc.init();
+        BoardInputController boardInputController = fxmlLoader.getController();
+        boardInputController.init();
         stage.setTitle("Nithin's-Race");
         stage.setScene(scene);
         stage.show();

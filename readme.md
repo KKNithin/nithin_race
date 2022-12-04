@@ -1,4 +1,4 @@
-# Nithin's Race - Game Developed using Java & Java FX
+# Nithin's Race (A version of Simon's Race) - Game Developed using Java & Java FX
 > A version of Simon's Race &copy; Authored by Nithin Katta Kiranprakash (Student Number: 22200096)
 ### Basic requirements to run the game:
 * Minimum Java JDK/JRE version 17.
@@ -18,7 +18,7 @@
   2. Minimum of 2 players should play the game.
   3. Only one player per lane, hence you can't have players more than number of columns.
   4. Players are placed automatically along with a color, on the lanes based on custom player placement algorithm.
-  5. Level of difficulty can be choosen (Easy, Medium, Difficult) which increases the obstacles on board respectively.
+  5. Level of difficulty can be chosen (Easy, Medium, Difficult) which increases the obstacles on board respectively.
   6. Each player shall start the game with 50 points initially.
 * Trap Rules:
   1. Players can cross all the traps except - Fence, where they have to choose a direction either Right/Left or 

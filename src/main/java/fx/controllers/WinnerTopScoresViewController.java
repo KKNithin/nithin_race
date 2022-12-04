@@ -53,6 +53,10 @@ public class WinnerTopScoresViewController {
         }
     }
 
+    /**
+     * This method starts the game again by resetting all the required variables.
+     * @throws IOException
+     */
     public void startGameFromBegin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("board-input-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

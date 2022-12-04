@@ -3,10 +3,11 @@ package core;
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utilities.Constants.topScoresFile;
+import static models.utilities.Constants.topScoresFile;
+import models.core.Player;
 import org.junit.jupiter.api.Test;
-import utilities.Constants;
-import utilities.FileHandler;
+import models.utilities.Constants;
+import models.utilities.FileHandler;
 
 public class SaveToFileTest {
 

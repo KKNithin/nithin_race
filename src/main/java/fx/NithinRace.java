@@ -1,14 +1,15 @@
 package fx;
 
+import fx.controllers.BoardInputController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import utilities.Constants;
+import models.utilities.Constants;
 
 import java.io.IOException;
 
-import static utilities.Constants.obstacleImages;
+import static models.utilities.Constants.obstacleImages;
 
 /**
  * @author Nithin
@@ -16,13 +17,14 @@ import static utilities.Constants.obstacleImages;
  */
 public class NithinRace extends Application {
     /**
+     * Main method to start the game.
      * @param stage Default stage to be initialised by Java FX
      * @throws IOException If the provided fxml is faulty
      */
     @Override
     public void start(Stage stage) throws IOException {
         initialiseImageMaps();
-        FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("first-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("board-input-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         BoardInputController fvc = fxmlLoader.getController();
         fvc.init();

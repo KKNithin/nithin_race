@@ -4,14 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utilities.Constants.Directions.BACKWARD;
-import static utilities.Constants.Directions.FORWARD;
-import static utilities.Constants.TrapType.TELEPROTATION_TUNNEL;
-import static utilities.Constants.allPlayers;
+import static models.utilities.Constants.Directions.BACKWARD;
+import static models.utilities.Constants.Directions.FORWARD;
+import static models.utilities.Constants.TrapType.TELEPROTATION_TUNNEL;
+import static models.utilities.Constants.allPlayers;
 import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import models.core.Board;
+import models.core.Player;
+import models.core.StartGame;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +22,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-import utilities.Constants;
+import models.utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
 public class TeleportationObstacleTest {
@@ -34,34 +37,34 @@ public class TeleportationObstacleTest {
         stage.setScene(root.getScene());
         stage.show();
         stage.toFront();
-        StartGame.gvc = fxmlLoader.getController();
+        StartGame.gameViewController = fxmlLoader.getController();
     }
 
     @BeforeEach
     public void setUp() throws Exception {
         Constants.rows = 8;
         Constants.columns = 8;
-        StartGame.b = new Board(8, 8);
+        StartGame.board = new Board(8, 8);
         Constants.playerNames.add("Nithin");
         NithinRace.initialiseImageMaps();
-        StartGame.gvc.setUpGameGridForTest();
+        StartGame.gameViewController.setUpGameGridForTest();
         player1 = new Player(7, 4, "Nithin", 50, "black");
-        StartGame.b.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
+        StartGame.board.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
         Constants.playersInitialPos.add(new Player(7, 4, "Nithin", 50, "black"));
         player2 = new Player(2, 5, "Chethan", 50, "black");
-        StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
+        StartGame.board.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
         Constants.playersInitialPos.add(new Player(7, 5, "Chethan", 50, "black"));
         allPlayers = new ArrayList<>();
         allPlayers.add(player1);
         allPlayers.add(player2);
-        StartGame.b.setTrap(3, 4, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(4, 4, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(5, 4, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(6, 4, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(3, 5, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(4, 5, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(5, 5, TELEPROTATION_TUNNEL);
-        StartGame.b.setTrap(6, 5, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(3, 4, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(4, 4, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(5, 4, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(6, 4, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(3, 5, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(4, 5, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(5, 5, TELEPROTATION_TUNNEL);
+        StartGame.board.setTrap(6, 5, TELEPROTATION_TUNNEL);
     }
 
     @AfterEach

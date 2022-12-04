@@ -9,4 +9,10 @@ module race.game.nithinfxrace {
 
     opens fx to javafx.fxml;
     exports fx;
+    exports fx.controllers;
+    exports models.core;
+    exports models.exceptions;
+    exports models.traps;
+    exports models.utilities;
+    opens fx.controllers to javafx.fxml;
 }

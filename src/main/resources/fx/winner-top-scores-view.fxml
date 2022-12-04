@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="654.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.WinnerTopScoresViewController">
+<AnchorPane prefHeight="654.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.WinnerTopScoresViewController">
    <children>
       <SplitPane dividerPositions="0.15897435897435894" layoutX="14.0" layoutY="14.0" orientation="VERTICAL" prefHeight="625.0" prefWidth="586.0">
         <items>

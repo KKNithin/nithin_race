@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainGameAnchor" prefHeight="702.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.GameViewController">
+<AnchorPane fx:id="mainGameAnchor" prefHeight="702.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.GameViewController">
    <children>
       <SplitPane fx:id="mainGameSplitPane" dividerPositions="0.75" layoutX="7.0" layoutY="7.0" prefHeight="693.0" prefWidth="926.0">
         <items>

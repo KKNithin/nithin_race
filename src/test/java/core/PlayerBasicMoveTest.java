@@ -3,8 +3,11 @@ package core;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utilities.Constants.Directions.*;
-import exceptions.BoundaryCaseException;
+import static models.utilities.Constants.Directions.*;
+import models.core.Board;
+import models.core.Player;
+import models.core.StartGame;
+import models.exceptions.BoundaryCaseException;
 import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-import utilities.Constants;
+import models.utilities.Constants;
 
 @ExtendWith(ApplicationExtension.class)
 public class PlayerBasicMoveTest {
@@ -30,21 +33,21 @@ public class PlayerBasicMoveTest {
         stage.setScene(root.getScene());
         stage.show();
         stage.toFront();
-        StartGame.gvc = fxmlLoader.getController();
+        StartGame.gameViewController = fxmlLoader.getController();
     }
 
     @BeforeEach
     public void setUp() throws Exception {
         Constants.rows = 8;
         Constants.columns = 8;
-        StartGame.b = new Board(8, 8);
+        StartGame.board = new Board(8, 8);
         Constants.playerNames.add("Nithin");
         NithinRace.initialiseImageMaps();
-        StartGame.gvc.setUpGameGridForTest();
+        StartGame.gameViewController.setUpGameGridForTest();
         player1 = new Player(7, 4, "Nithin", 50, "black");
-        StartGame.b.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
+        StartGame.board.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
         player2 = new Player(3, 5, "Chethan", 50, "black");
-        StartGame.b.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
+        StartGame.board.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
     }
 
     @AfterEach

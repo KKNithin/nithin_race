@@ -25,7 +25,7 @@
          <items>
          </items>
       </MenuButton>
-      <Label fx:id="NoOfPlayersLabel1" layoutX="69.0" layoutY="191.0" text="Enter number of players" />
+      <Label fx:id="difficultyLevel" layoutX="69.0" layoutY="191.0" text="Choose difficulty level" />
       <MenuButton fx:id="difficultyLevelMenu" layoutX="322.0" layoutY="190.0" mnemonicParsing="false" text="Easy">
         <items>
         </items>

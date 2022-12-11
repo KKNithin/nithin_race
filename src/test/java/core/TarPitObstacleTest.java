@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import models.core.Board;
 import models.core.Player;
 import models.core.StartGame;
+import models.utilities.BoardPrinterCMD;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,11 +64,15 @@ public class TarPitObstacleTest {
         StartGame.board.setTrap(4, 5, TAR_PIT);
         StartGame.board.setTrap(5, 5, TAR_PIT);
         StartGame.board.setTrap(6, 5, TAR_PIT);
+        System.out.println("Board Before Start of Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
+        System.out.println("Board After Running Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @Test

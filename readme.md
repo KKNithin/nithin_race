@@ -32,7 +32,7 @@
 
 ## Test Scenarios:
 #### Scenario: Player Basic Move Test (PlayerBasicMoveTest.java)
-##### Run the command `mvn clean test -Dtest="PlayerBasicMoveTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=PlayerBasicMoveTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -55,7 +55,7 @@ Then player shall move to row position < i > and column position < j >
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
-And no trap in his path and hits upper or boundary
+And no trap in his path and hits upper or boundary of board
 When player rolls Move dice and gets < Move Value >
 And rolls a Direction dice and gets < Direction Value >
 Then player shall move to initial row position < i > and initial column position < j >
@@ -67,7 +67,7 @@ Then player shall move to initial row position < i > and initial column position
 ```
 
 #### Scenario: Player falls on _Fire_ Trap (FireObstacleTest.java)
-##### Run the command `mvn clean test -Dtest="FireObstacleTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=FireObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -89,7 +89,7 @@ Then player shall move to his initial row position < i > and column position < j
 ```
 
 #### Scenario: Player falls on _Tar Pit_ Trap (TarPitObstacleTest.java)
-##### Run the command `mvn clean test -Dtest="TarPitObstacleTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=TarPitObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -113,7 +113,7 @@ Then player shall move to  row position < i > and column position < j >.
 ```
 
 #### Scenario: Player falls on _Teleportation Tunnel_ Trap (TeleportationObstacleTest.java)
-##### Run the command `mvn clean test -Dtest="TeleportationObstacleTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=TeleportationObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player <player-1>  is at row position < x > and column position < y >
@@ -136,7 +136,7 @@ Then the two players shall interchange their positions.
 ```
 
 #### Scenario: Player encounters _Fence_ Trap (FenceObstacleTest.java)
-##### Run the command `mvn clean test -Dtest="FenceObstacleTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=FenceObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -156,8 +156,8 @@ Then player shall move to row position < i > and column position < j >.
 |  2  |  5  |  3  |  5  |     4      |    BACKWARD     |         Left - L          |  2  |  2  |
 ```
 
-#### Scenario: Player Movement During Obstacles and Border (BorderAndObstacle.java)
-##### Run the command `mvn clean test -Dtest="BorderAndObstacle"` to see the output of below test scenarios
+#### Scenario: Player Movement During Obstacles and Border (BorderAndObstacleTest.java)
+##### Run the command `mvn clean test -Dtest=BorderAndObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -173,7 +173,7 @@ Then player shall move to row position < i > and column position < j >
 |  7  |  6  |           Left - L        |  7  |  2  |
 ```
 #### Scenario: Player Movement During Player Obstruction and Fence (PlayerAndObstacleTest.java)
-##### Run the command `mvn clean test -Dtest="PlayerAndObstacleTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=PlayerAndObstacleTest` to see the output of below test scenarios
 ```
 Given Board size of 8 rows and 8 columns
 And player is at row position < x > and column position < y > 
@@ -189,7 +189,7 @@ Then player shall move to row position < i > and column position < j >
 |  7  |  2  | Right - R, Up - U, Right - R|  5  |  4  |
 ```
 #### Scenario: Saving excess number of players and their scores to file (SaveToFileTest.java)
-##### Run the command `mvn clean test -Dtest="SaveToFileTest"` to see the output of below test scenarios
+##### Run the command `mvn clean test -Dtest=SaveToFileTest` to see the output of below test scenarios
 ```
 Given 13 players with names and scores
 When each player is inserted to the Top Score file 

@@ -12,6 +12,7 @@ import fx.NithinRace;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import models.utilities.BoardPrinterCMD;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,11 +49,15 @@ public class PlayerBasicMoveTest {
         StartGame.board.addPlayerToPosition(player1.getPositionX(), player1.getPositionY(), player1);
         player2 = new Player(3, 5, "Chethan", 50, "black");
         StartGame.board.addPlayerToPosition(player2.getPositionX(), player2.getPositionY(), player2);
+        System.out.println("Board Before Start of Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();
+        System.out.println("Board After Running Test case");
+        BoardPrinterCMD.printBoard();
     }
 
     @Test

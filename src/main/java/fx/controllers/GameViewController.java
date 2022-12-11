@@ -124,7 +124,7 @@ public class GameViewController {
                     rectangle.setFill(Color.WHITE);
                 }
                 StackPane sp = new StackPane(rectangle);
-                sp.setId(String.valueOf(i) + String.valueOf(j));
+                sp.setId(String.valueOf(i) + "-" + String.valueOf(j));
                 sp.setPrefHeight(reqTileHeight);
                 sp.setPrefWidth(reqTileWidth);
                 gameGrid.add(sp, j, i);
@@ -150,8 +150,10 @@ public class GameViewController {
      */
     public void modifyGridTile(Constants.GridOperationtype type, int row, int column, Player player,
                                TrapType obstacle, String com) {
-        StackPane stackPane = (StackPane) gameGrid.lookup("#" + String.valueOf(row) + String.valueOf(column));
+        StackPane stackPane = (StackPane) gameGrid.lookup("#" + String.valueOf(row) + "-" + String.valueOf(column));
+
         if (stackPane.getChildren().size() == 2) {
+            System.out.println("Removed index" + row + " " + column);
             stackPane.getChildren().remove(1);
         }
         switch (type) {
@@ -159,6 +161,8 @@ public class GameViewController {
                 if (null != player) {
                     updateScore(player);
                 }
+                System.out.println(stackPane.toString());
+                System.out.println(player);
                 modifyImageOnGridTile(stackPane, "src/main/resources/images/man-" + player.getColor() + ".png");
                 break;
             case ADD_OBSTACLE:

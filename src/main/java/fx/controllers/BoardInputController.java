@@ -2,16 +2,18 @@ package fx.controllers;
 
 import java.io.IOException;
 
-import static models.utilities.Constants.difficultyLevel;
+import static models.utilities.Constants.*;
 import fx.NithinRace;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import models.utilities.Constants;
 
@@ -89,10 +91,17 @@ public class BoardInputController {
                 Constants.rows = rows + 2;
                 Constants.columns = columns;
                 Constants.numberOfPlayers = noOfPlayers;
+
+                Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+                screenHeight = screenBounds.getHeight();
+                screenWidth = screenBounds.getWidth();
+
                 FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("player-input-view.fxml"));
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) FirstSceneOK.getScene().getWindow();
+                stage.setX(screenWidth/3.5);
+                stage.setY(0);
                 PlayerInputController playerInputController = fxmlLoader.getController();
                 playerInputController.setFieldsToAcceptPlayerNames(noOfPlayers);
                 stage.setTitle("Nithin's-Race");

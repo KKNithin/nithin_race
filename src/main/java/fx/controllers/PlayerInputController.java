@@ -1,6 +1,7 @@
 package fx.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static models.utilities.Constants.*;
 import fx.NithinRace;
@@ -49,7 +50,7 @@ public class PlayerInputController {
             String id = "player" + i + "tf";
             tf.setId(id);
             HBox hBox = new HBox(new Label("Player (" + num + ")"), tf);
-            hBox.setMargin(tf, new Insets(0, 0, 20, 60));
+            hBox.setMargin(tf, new Insets(0, 0, 10, 40));
 
             secondPaneVbox.getChildren().add(hBox);
         }
@@ -66,6 +67,7 @@ public class PlayerInputController {
      */
     public void getPlayerNames() throws IOException {
         String playerName = null;
+        Boolean validation = true;
         for (Node node :
                 secondPaneVbox.getChildren()) {
             HBox hBox = (HBox) node;
@@ -73,32 +75,31 @@ public class PlayerInputController {
 
             if (tf != null) {
                 playerName = tf.getText();
-                if (playerName.isEmpty()) {
-                    secondBottomLabel.setText("Please enter all the Names properly");
-                } else if(!playerNames.contains(playerName)){
-                        playerNames.add(playerName);
+                if (playerName.isEmpty() || playerNames.contains(playerName)) {
+                    secondBottomLabel.setText("Please enter unique player names /Don't leave any field as blank");
+                    playerNames = new ArrayList<>();
+                    validation = false;
+                    break;
                 } else {
-                    secondBottomLabel.setText("Player Name: '"+playerName + "'" + ", seems to be there - Please " +
-                            "keep the names unique");
+                    playerNames.add(playerName);
                 }
             } else {
                 throw new RuntimeException();
             }
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("game-view.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) secondOKButton.getScene().getWindow();
-        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-        screenHeight = screenBounds.getHeight();
-        screenWidth = screenBounds.getWidth();
-        stage.setX(0);
-        stage.setY(0);
-        GameViewController gameViewController = fxmlLoader.getController();
-        gameViewController.setGameViewScreen();
-        stage.setTitle("Nithin's-Race");
-        stage.setScene(scene);
-        stage.show();
-        gameViewController.initializeGrid();
+        if(validation){
+            FXMLLoader fxmlLoader = new FXMLLoader(NithinRace.class.getResource("game-view.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) secondOKButton.getScene().getWindow();
+            stage.setX(0);
+            stage.setY(0);
+            GameViewController gameViewController = fxmlLoader.getController();
+            gameViewController.setGameViewScreen();
+            stage.setTitle("Nithin's-Race");
+            stage.setScene(scene);
+            stage.show();
+            gameViewController.initializeGrid();
+        }
     }
 }
